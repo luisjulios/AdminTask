@@ -1,0 +1,60 @@
+.brand{
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 4rem;
+  transition: .5s ease;
+  margin: auto;
+  font-family: 'Anton', sans-serif;
+}
+.brand1 {
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 50% 0%, 0 100%);
+}
+.brand2 {
+  clip-path: polygon(0 100%, 50% 0%, 100% 100%, 100% 100%, 0 100%);
+}
+.box:hover .brand1 {
+  transform: translateY(-10px);
+}
+.box:hover .brand2 {
+  transform: translateY(10px);
+}
+
+.waves {
+  position: absolute;
+  bottom: 0;
+  height: 527px;
+  width: 100%;
+  overflow: hidden;
+  .wave {
+    position: absolute;
+    left: -180px;
+    bottom: 0;
+    width: 2402px;
+    height: 427px;
+    background: url(/img/waves.png) center bottom no-repeat;
+    animation: 30s wave ease infinite alternate;
+  }
+  .wave.a {
+    background-position: 0 -854px;
+  }
+  .wave.b {
+    background-position: 0 -427px;
+    animation-delay: .6s;
+  }
+  .wave.c {
+    background-position: 0 0;
+    animation-delay: 1.2s;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(0 , 0);
+  }
+  50% {
+    transform: translate(-80px, 30px);
+  }
+  100% {
+    transform: translate(160px, -60px);
+  }
+}
