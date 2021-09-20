@@ -12,10 +12,10 @@
 .brand2 {
   clip-path: polygon(0 100%, 50% 0%, 100% 100%, 100% 100%, 0 100%);
 }
-.box:hover .brand1 {
+.header:hover .brand1 {
   transform: translateY(-10px);
 }
-.box:hover .brand2 {
+.header:hover .brand2 {
   transform: translateY(10px);
 }
 
@@ -25,6 +25,7 @@
   height: 527px;
   width: 100%;
   overflow: hidden;
+  z-index: -1;
   .wave {
     position: absolute;
     left: -180px;
@@ -32,7 +33,7 @@
     width: 2402px;
     height: 427px;
     background: url(/img/waves.png) center bottom no-repeat;
-    animation: 30s wave ease infinite alternate;
+    animation: 25s wave ease infinite alternate;
   }
   .wave.a {
     background-position: 0 -854px;
@@ -57,4 +58,15 @@
   100% {
     transform: translate(160px, -60px);
   }
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
