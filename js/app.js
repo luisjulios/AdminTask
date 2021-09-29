@@ -1,6 +1,6 @@
 window.onload = function () {
-  crearProyecto()
-  crearTarea()
+  crearProyecto();
+  crearTarea();
 }
 class Project {
   constructor(name, date) {
@@ -29,17 +29,20 @@ class Task {
 }
 let tareas = [];
 const crearTarea = (name, priority) => {
-  name = prompt("Ingresa el nombre de la tarea:");
-  priority = parseInt(prompt("Ingresa una prioridad a la tarea del 1 al 5"));
-  let tarea = new Task(name, priority);
-  tareas.push(tarea);
-  const tasks = document.getElementById('tasks');
-  const li = document.createElement('li');
-  li.innerHTML = `<li class="list-group-item d-flex justify-content-between align-items-center" id="nameTask">${tarea.name}<span class="badge bg-info rounded-pill m-2" title="Prioridad de la tarea" id="priority">${tarea.priority}</span></li>`;
-  tasks.appendChild(li);
+  let nTareas = parseInt(prompt("Cuantas tareas deseas agregar?"));
+  for (let i = 0; i < nTareas; i++) {
+    name = prompt("Ingresa el nombre de la tarea:");
+    priority = parseInt(prompt("Ingresa una prioridad a la tarea del 1 al 3"));
+    let tarea = new Task(name, priority);
+    tareas.push(tarea);
+    const tasks = document.getElementById('tasks');
+    const li = document.createElement('li');
+    li.innerHTML = `<li class="list-group-item d-flex justify-content-between align-items-center" id="nameTask">${tarea.name}<span class="badge bg-info rounded-pill m-2" title="Prioridad de la tarea" id="priority">${tarea.priority}</span></li>`;
+    tasks.appendChild(li);
+  }
 }
 
-
+  
 
 
 
