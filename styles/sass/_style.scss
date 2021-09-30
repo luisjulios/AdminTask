@@ -50,7 +50,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 5rem;
+  padding: 1rem;
 }
 .section {
   height: auto;
@@ -134,6 +134,16 @@ button.anadir {
   background-color: #000;
 }}
 
+ul {
+  height: auto;
+  margin: auto;
+  li{
+    border: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
 .footer {
   width: 100vw;
   height: 5rem;
@@ -176,6 +186,6 @@ button.anadir {
     font-size: smaller;
   }
   .section {
-    width: 80%;
+    width: 100%;
   }
 }

@@ -50,7 +50,7 @@ btnP.addEventListener('click', ()=>{
   // })
   const projects = document.getElementById('projects');
   const li = document.createElement('li');
-  li.innerHTML = `<li class="list-group-item d-flex justify-content-between align-items-center" title="nameProject">${inputProject.value}<span class="badge bg-info rounded-pill m-2" title="Cantidad de tareas del proyecto" id="totalTasks">${tareas.length}</span><span class="badge bg-secondary m-2" title="Fecha de Entrega" id="totalTasks">${inputDate.value.toLocaleDateString()}</span></li>`;
+  li.innerHTML = `<li class="list-group-item d-flex justify-content-between align-items-center" title="nameProject">${inputProject.value}<span class="badge bg-info rounded-pill m-2" title="Cantidad de tareas del proyecto" id="totalTasks">No disponible</span><span class="badge bg-secondary m-2" title="Fecha de Entrega" id="totalTasks">${inputDate.value}</span></li>`;
   projects.appendChild(li);
   formProjects.reset();
 })
