@@ -13,17 +13,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="styles/css/style.css">
   <title>AdminTask - Administrador de tareas</title>
 </head>
 
-<body class="body">
+<body id="body" class="light">
   <header class="header container-fluid animate__animated animate__fadeIn">
     <h1 class="box">
       <p class="brand brand1" id="titulo">AdminTask</p>
@@ -31,9 +28,13 @@
     </h1>
     <nav class="navbar navbar-light">
       <div class="container-fluid">
-        <a class="navbar-brand" data-bs-toggle="modal" data-bs-target="#miPerfil">Mi perfil</a>
-        <a class="navbar-brand" href="login.html">Cerrar sesión</a>
-      </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">Luis Julio</button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#miPerfil">Mi perfil</a></li>
+            <li><a class="dropdown-item" type="button" href="login.html">Cerrar sesión</a></li>
+          </ul>
+        </div>
     </nav>
   </header>
   <main class="main container-fluid animate__animated animate__slideInLeft">
@@ -43,7 +44,7 @@
       <ul class="list-group" id="projects">
         <li class="list-group-item border-5 d-flex justify-content-between align-items-center" title="nameProject">
           Nombre del proyecto
-          <span class="badge bg-info rounded-pill m-2" title="Cantidad de tareas del proyecto" id="totalTasks">Tareas</span>
+          <span class="badge bg-info rounded-pill m-2" title="Cantidad de tareas del proyecto" id="totalTasks">N° Tareas</span>
           <span class="badge bg-secondary m-2" title="Fecha de Entrega" id="totalTasks">Fecha de entrega</span>
           </li>
       </ul>
@@ -58,7 +59,14 @@
           </li>
       </ul>
     </section>
+    <section class="section col-10 container-fluid">
+      <h2>% de tareas pendientes</h2>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+      </div>
+    </section>
   </main>
+
   <div class="waves">
     <div class="wave circulo a"></div>
     <div class="wave circulo b"></div>
@@ -73,12 +81,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post">
+        <form id="formTasks">
           <div class="form-floating">
             <input type="tarea" class="form-control" id="tarea" placeholder="Tarea" autocomplete="off">
             <label for="tarea">Nombre de la tarea</label>
           </div>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="prioridad">
             <option selected disabled>Seleccione una prioridad para la tarea</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -88,7 +96,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary" id="btnT">Guardar</button>
       </div>
     </div>
   </div>
@@ -102,20 +110,20 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="#" method="post">
+          <form id="formProjects">
             <div class="form-floating">
               <input type="proyecto" class="form-control" id="proyecto" placeholder="Proyecto" autocomplete="off">
               <label for="proyecto">Nombre del proyecto</label>
             </div>
             <div class="form-floating">
-              <input required autocomplete="off" type="text" class="form-control" name="fecha" id="fecha" placeholder="dd/mm/aa">
+              <input required autocomplete="off" type="date" class="form-control" name="fecha" id="fecha">
               <label for="fecha">Fecha</label>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-primary" id="btnP">Guardar</button>
         </div>
       </div>
     </div>
@@ -160,11 +168,15 @@
       </div>
     </div>
   </div>
-  <footer class="footer container-fluid d-flex justify-content-center animate__animated animate__fadeIn">
+  <footer class="footer container-fluid animate__animated animate__fadeIn">
     <p class="footer__p text-center">AdminTask &copy; - Todos los derechos reservados.</p>
     <p class="footer__p text-center">Diseño y desarrollo por <a href="https://www.linkedin.com/in/antsth/"
         target="_blank">Luis Julio</a>.</p>
     <p></p>
+    <div class="form-check form-switch d-flex flex-column justify-content-center">
+      <input class="form-check-input" type="checkbox" id="toggle">
+      <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+    </div>
   </footer>
   <script src="js/app.js" defer></script>
 </body>

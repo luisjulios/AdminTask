@@ -1,10 +1,11 @@
 .brand{
   position: absolute;
   text-transform: uppercase;
-  font-size: 4rem;
+  font-size: 2.5rem;
   transition: .5s ease;
-  margin: auto;
+  margin: 0.5rem;
   font-family: 'Anton', sans-serif;
+  color: #4e4f57;
 }
 .brand1 {
   clip-path: polygon(0 0, 100% 0%, 100% 100%, 50% 0%, 0 100%);
@@ -23,7 +24,7 @@
   position: absolute;
   bottom: 0;
   height: 527px;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   z-index: -1;
   .wave {
