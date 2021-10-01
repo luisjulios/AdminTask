@@ -218,11 +218,15 @@ button.anadir:hover {
   color: #ffffff;
 }
 
-.progress {
+.barra {
+  height: 13rem;
+  margin-bottom: 5rem;
+}
+.barra .progress {
   width: 30%;
   margin: 3rem auto;
 }
-.progress .progress-bar {
+.barra .progress .progress-bar {
   background-color: #000;
 }
 
@@ -254,7 +258,7 @@ ul li {
   margin: auto;
 }
 .footer .footer__p {
-  margin: 1.5rem;
+  margin: auto;
   padding: 1rem;
 }
 .footer .form-check-input {
@@ -267,7 +271,7 @@ ul li {
 
 @media (max-width: 992px) {
   html {
-    padding-bottom: 11rem;
+    padding-bottom: 20rem;
   }
 
   .header {
@@ -290,6 +294,10 @@ ul li {
 
   .section {
     width: 90%;
+  }
+
+  .barra {
+    margin-bottom: 1rem;
   }
 }
 

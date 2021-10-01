@@ -64,7 +64,6 @@
   margin: 2rem;
   padding: 1rem;
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -126,13 +125,16 @@ button.anadir {
     }
   }
 }
-.progress{
-  width: 30%;
-  margin: 3rem auto;
-  .progress-bar {
-  background-color: #000;
-}}
-
+.barra {
+  height: 13rem;
+  margin-bottom: 5rem;
+  .progress{
+    width: 30%;
+    margin: 3rem auto;
+    .progress-bar {
+    background-color: #000;
+  }}
+}
 ul {
   width: 100%;
   li{
@@ -159,7 +161,7 @@ ul {
   position: fixed;
   margin: auto;
   .footer__p {
-    margin: 1.5rem;
+    margin: auto;
     padding: 1rem;
   }
   .form-check-input{
@@ -173,7 +175,7 @@ ul {
 
 @media (max-width: 992px) {
   html {
-    padding-bottom: 11rem;
+    padding-bottom: 20rem;
   }
   .header {
     display: flex;
@@ -192,5 +194,8 @@ ul {
   }
   .section {
     width: 90%;
+  }
+  .barra {
+    margin-bottom: 1rem;
   }
 }
