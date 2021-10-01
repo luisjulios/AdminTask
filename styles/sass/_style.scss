@@ -7,19 +7,19 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   color: #000000;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  padding-bottom: 10rem;
 }
+
 .dark {
   height: 100vh;
   width: 100vw;
   background-blend-mode: normal, normal, screen, overlay, normal;
   background-attachment: fixed;
   background-position: center;
-  background: linear-gradient(-45deg, #3b3b3b, #000000, #838383);	
-  animation: gradient 15s ease infinite alternate;
+  background: #3b3b3b;	
 }
 .light {
   height: 100vh;
@@ -27,8 +27,7 @@
   background-blend-mode: normal, normal, screen, overlay, normal;
   background-attachment: fixed;
   background-position: center;
-  background: linear-gradient(-45deg, #928f8f, #c5c5c5, #807f7f);	
-  animation: gradient 15s ease infinite alternate;
+  background: #c5c5c5;	
 }
 .header {
   height: 6rem;
@@ -135,9 +134,11 @@ button.anadir {
 }}
 
 ul {
-  height: auto;
-  margin: auto;
+  width: 100%;
   li{
+    height: auto;
+    width: 100%;
+    margin: auto;
     border: 1rem;
     display: flex;
     justify-content: space-between;
@@ -156,9 +157,10 @@ ul {
   bottom: 0;
   font-size: 1rem;
   position: fixed;
+  margin: auto;
   .footer__p {
-    margin: 1.5rem 0;
-    padding: 0 3rem 0 3rem;
+    margin: 1.5rem;
+    padding: 1rem;
   }
   .form-check-input{
     background-color: #dadada;
@@ -170,6 +172,9 @@ ul {
 }
 
 @media (max-width: 992px) {
+  html {
+    padding-bottom: 11rem;
+  }
   .header {
     display: flex;
     flex-direction: row;
@@ -186,6 +191,6 @@ ul {
     font-size: smaller;
   }
   .section {
-    width: 100%;
+    width: 90%;
   }
 }

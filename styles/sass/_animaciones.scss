@@ -21,14 +21,14 @@
 }
 
 .waves {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   height: 527px;
   width: 100vw;
   overflow: hidden;
   z-index: -1;
   .wave {
-    position: absolute;
+    position: fixed;
     left: -180px;
     bottom: 0;
     width: 2402px;

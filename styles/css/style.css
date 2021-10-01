@@ -36,7 +36,7 @@
 }
 
 .waves {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   height: 527px;
   width: 100vw;
@@ -44,7 +44,7 @@
   z-index: -1;
 }
 .waves .wave {
-  position: absolute;
+  position: fixed;
   left: -180px;
   bottom: 0;
   width: 2402px;
@@ -91,10 +91,10 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   color: #000000;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  padding-bottom: 10rem;
 }
 
 .dark {
@@ -103,8 +103,7 @@
   background-blend-mode: normal, normal, screen, overlay, normal;
   background-attachment: fixed;
   background-position: center;
-  background: linear-gradient(-45deg, #3b3b3b, #000000, #838383);
-  animation: gradient 15s ease infinite alternate;
+  background: #3b3b3b;
 }
 
 .light {
@@ -113,8 +112,7 @@
   background-blend-mode: normal, normal, screen, overlay, normal;
   background-attachment: fixed;
   background-position: center;
-  background: linear-gradient(-45deg, #928f8f, #c5c5c5, #807f7f);
-  animation: gradient 15s ease infinite alternate;
+  background: #c5c5c5;
 }
 
 .header {
@@ -229,10 +227,12 @@ button.anadir:hover {
 }
 
 ul {
-  height: auto;
-  margin: auto;
+  width: 100%;
 }
 ul li {
+  height: auto;
+  width: 100%;
+  margin: auto;
   border: 1rem;
   display: flex;
   justify-content: space-between;
@@ -251,10 +251,11 @@ ul li {
   bottom: 0;
   font-size: 1rem;
   position: fixed;
+  margin: auto;
 }
 .footer .footer__p {
-  margin: 1.5rem 0;
-  padding: 0 3rem 0 3rem;
+  margin: 1.5rem;
+  padding: 1rem;
 }
 .footer .form-check-input {
   background-color: #dadada;
@@ -265,6 +266,10 @@ ul li {
 }
 
 @media (max-width: 992px) {
+  html {
+    padding-bottom: 11rem;
+  }
+
   .header {
     display: flex;
     flex-direction: row;
@@ -284,7 +289,7 @@ ul li {
   }
 
   .section {
-    width: 100%;
+    width: 90%;
   }
 }
 
