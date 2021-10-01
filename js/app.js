@@ -42,18 +42,18 @@ const btnP = document.getElementById('btnP')
 btnP.addEventListener('click', ()=>{
   const inputProject = document.getElementById('proyecto');
   const inputDate = document.getElementById('fecha');
-  // inputProject.addEventListener('input', ()=>{
-  //   let project = inputProject.value;
-  // })
-  // inputDate.addEventListener('input', ()=>{
-  //   let date = inputDate.value;
-  // })
+  let project = inputProject.value;
+  let date = inputDate.value;
   const projects = document.getElementById('projects');
   const li = document.createElement('li');
-  li.innerHTML = `<li class="list-group-item d-flex justify-content-between align-items-center" title="nameProject">${inputProject.value}<span class="badge bg-info rounded-pill m-2" title="Cantidad de tareas del proyecto" id="totalTasks">No disponible</span><span class="badge bg-secondary m-2" title="Fecha de Entrega" id="totalTasks">${inputDate.value}</span></li>`;
+  li.innerHTML = `<li class="list-group-item d-flex justify-content-between align-items-center" title="nameProject">${project}<span class="badge bg-info rounded-pill m-2" title="Cantidad de tareas del proyecto" id="totalTasks">${tareas.length}</span><span class="badge bg-secondary m-2" title="Fecha de Entrega" id="totalTasks">${date}</span></li>`;
   projects.appendChild(li);
+  let proyecto = new Project(project, date);
+  proyectos.push(proyecto);
   formProjects.reset();
+  console.log(proyectos);
 })
+
 formProjects.addEventListener('submit', (e)=>{
   e.preventDefault()
 })
@@ -62,20 +62,17 @@ const formTasks = document.getElementById('formTasks')
 btnT.addEventListener('click', ()=>{
   const inputTask = document.getElementById('tarea');
   const selectPriority= document.getElementById('prioridad');
-  // inputTask.addEventListener('input', ()=>{
-  //   let task = inputTask.value;
-  //   console.log(task);
-  // })
-  // selectPriority.addEventListener('input', ()=>{
-  //   let priority = selectPriority.value;
-  //   console.log(priority);
-  // })
+  let task = inputTask.value;
+  let priority = selectPriority.value;
   const tasks = document.getElementById('tasks');
   const li = document.createElement('li');
   li.innerHTML = `<li class="list-group-item d-flex justify-content-between align-items-center" id="nameTask">${inputTask.value}<span class="badge bg-info rounded-pill m-2" title="Prioridad de la tarea" id="priority">${selectPriority.value}</span></li>`;
   tasks.appendChild(li);
+  let tarea = new Task(task, priority);
+  tareas.push(tarea);
   formTasks.reset();
 })
+
 formTasks.addEventListener('submit', (e)=>{
   e.preventDefault();
 })
@@ -99,8 +96,15 @@ formTasks.addEventListener('submit', (e)=>{
 
 
 const body = document.getElementById('body');
+const footer = document.getElementById('footer')
+const header = document.getElementById('header')
 const toggle = document.getElementById('toggle');
 toggle.addEventListener('click', () => {
-  body.classList.toggle('dark')
-  body.classList.toggle('light')
+  body.classList.toggle('dark');
+  body.classList.toggle('light');
+  footer.classList.toggle('light');
+  footer.classList.toggle('dark');
+  header.classList.toggle('light');
+  header.classList.toggle('dark');
 })
+

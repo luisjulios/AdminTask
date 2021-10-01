@@ -89,6 +89,9 @@
 .body {
   height: 100vh;
   width: 100vw;
+  background-blend-mode: normal, normal, screen, overlay, normal;
+  background-attachment: fixed;
+  background-position: center;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -98,34 +101,24 @@
 }
 
 .dark {
-  height: 100vh;
-  width: 100vw;
-  background-blend-mode: normal, normal, screen, overlay, normal;
-  background-attachment: fixed;
-  background-position: center;
-  background: #3b3b3b;
+  background-color: #2e2e2e;
 }
 
 .light {
-  height: 100vh;
-  width: 100vw;
-  background-blend-mode: normal, normal, screen, overlay, normal;
-  background-attachment: fixed;
-  background-position: center;
-  background: #c5c5c5;
+  background-color: #9c9c9c;
 }
 
 .header {
   height: 6rem;
   width: 100vw;
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-  background-color: rgba(255, 255, 255, 0.5);
   top: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-around;
+  margin-bottom: 4rem;
 }
 
 .main {
@@ -135,14 +128,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem;
 }
 
 .section {
   height: auto;
   width: auto;
   backdrop-filter: blur(7px) saturate(100%);
-  background-color: #c7c7c7;
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
   display: flex;
@@ -220,7 +211,6 @@ button.anadir:hover {
 
 .barra {
   height: 13rem;
-  margin-bottom: 5rem;
 }
 .barra .progress {
   width: 30%;
@@ -247,7 +237,6 @@ ul li {
   width: 100vw;
   height: 5rem;
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-  background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -261,10 +250,13 @@ ul li {
   margin: auto;
   padding: 1rem;
 }
-.footer .form-check-input {
+.footer .form-check {
+  margin-right: 2rem;
+}
+.footer .form-check .form-check-input {
   background-color: #dadada;
 }
-.footer .form-check-input:checked {
+.footer .form-check .form-check-input:checked {
   background-color: #000;
   border-color: #757575;
 }
@@ -294,10 +286,6 @@ ul li {
 
   .section {
     width: 90%;
-  }
-
-  .barra {
-    margin-bottom: 1rem;
   }
 }
 

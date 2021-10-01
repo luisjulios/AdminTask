@@ -21,7 +21,7 @@
 </head>
 
 <body id="body" class="dark">
-  <header class="header container-fluid animate__animated animate__fadeIn">
+  <header class="header container-fluid animate__animated animate__fadeIn light" id="header">
     <h1 class="box">
       <p class="brand brand1" id="titulo">AdminTask</p>
       <p class="brand brand2" id="titulo">AdminTask</p>
@@ -38,7 +38,7 @@
     </nav>
   </header>
   <main class="main container-fluid animate__animated animate__slideInLeft">
-    <section class="section col-2 container-fluid">
+    <section class="section col-10 container-fluid light">
       <h2>Listado de proyectos</h2>
       <button type="button" class="btn anadir" title="Añadir proyecto" data-bs-toggle="modal" data-bs-target="#modalProyecto">+</button>
       <ul class="list-group" id="projects">
@@ -49,7 +49,7 @@
           </li>
       </ul>
     </section>
-    <section class="section col-10 container-fluid">
+    <section class="section col-10 container-fluid light">
       <h2>Listado de tareas del proyecto</h2>
       <button type="button" class="btn anadir" title="Añadir tarea" data-bs-toggle="modal" data-bs-target="#modalTarea">+</button>
       <ul class="list-group " id="tasks">
@@ -59,7 +59,7 @@
           </li>
       </ul>
     </section>
-    <section class="section col-10 container-fluid barra">
+    <section class="section col-10 container-fluid barra light">
       <h2>% de tareas pendientes</h2>
       <div class="progress">
         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
@@ -168,7 +168,7 @@
       </div>
     </div>
   </div>
-  <footer class="footer container-fluid animate__animated animate__fadeIn">
+  <footer class="footer container-fluid animate__animated animate__fadeIn light" id="footer">
     <p class="footer__p text-center">AdminTask &copy; - Todos los derechos reservados.</p>
     <p class="footer__p text-center">Diseño y desarrollo por <a href="https://www.linkedin.com/in/antsth/"
         target="_blank">Luis Julio</a>.</p>
