@@ -16,6 +16,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a979aec070.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles/css/style.css">
   <title>AdminTask - Administrador de tareas</title>
 </head>
@@ -41,23 +42,39 @@
     <section class="section col-10 container-fluid light">
       <h2>Listado de proyectos</h2>
       <button type="button" class="btn anadir" title="Añadir proyecto" data-bs-toggle="modal" data-bs-target="#modalProyecto">+</button>
-      <ul class="list-group" id="projects">
-        <li class="list-group-item border-5 d-flex justify-content-between align-items-center" title="nameProject">
-          Nombre del proyecto
-          <span class="badge bg-info rounded-pill m-2" title="Cantidad de tareas del proyecto" id="totalTasks">N° Tareas</span>
-          <span class="badge bg-secondary m-2" title="Fecha de Entrega" id="totalTasks">Fecha de entrega</span>
-          </li>
-      </ul>
+      <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Proyecto</th>
+            <th scope="col">N° de  Tareas</th>
+            <th scope="col">Fecha de entrega</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tableProjects">
+        </tbody>
+      </table>
+    </div>
     </section>
     <section class="section col-10 container-fluid light">
       <h2>Listado de tareas del proyecto</h2>
-      <button type="button" class="btn anadir" title="Añadir tarea" data-bs-toggle="modal" data-bs-target="#modalTarea">+</button>
-      <ul class="list-group " id="tasks">
-        <li class="list-group-item border-5 d-flex justify-content-between align-items-center">
-          Nombre de la tarea
-          <span class="badge bg-secondary  rounded-pill m-2" title="Prioridad de la tarea">Prioridad</span>
-          </li>
-      </ul>
+      <button type="button" class="btn anadir" title="Añadir tarea" data-bs-toggle="modal" data-bs-target="#modalTarea" id="openModalTask">+</button>
+      <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Tarea</th>
+            <th scope="col">Prioridad</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tableTasks">
+        </tbody>
+      </table>
+    </div>
     </section>
     <section class="section col-10 container-fluid barra light">
       <h2>% de tareas pendientes</h2>
@@ -82,6 +99,9 @@
       </div>
       <div class="modal-body">
         <form id="formTasks">
+          <select class="form-select" aria-label="Default select example" id="projects">
+            <option selected disabled>Seleccione el proyecto al cual desea agregar las tareas</option>
+          </select>
           <div class="form-floating">
             <input type="tarea" class="form-control" id="tarea" placeholder="Tarea" autocomplete="off">
             <label for="tarea">Nombre de la tarea</label>
