@@ -71,7 +71,7 @@
 
 .content {
   position: absolute;
-  top: 7%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 130px;
@@ -86,7 +86,7 @@
     font-weight: 600;
     overflow: hidden;
     height: 40px;
-    padding: 0 40px;
+    padding: 0 20px;
 
     &::before {
       content: '[';

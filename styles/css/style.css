@@ -85,7 +85,7 @@
 }
 .content {
   position: absolute;
-  top: 7%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 130px;
@@ -100,7 +100,7 @@
   font-weight: 600;
   overflow: hidden;
   height: 40px;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 .content__container::before {
   content: "[";
@@ -203,6 +203,7 @@
 }
 
 .main {
+  width: 100%;
   height: auto;
   margin: auto;
   display: flex;
@@ -213,7 +214,7 @@
 
 .section {
   height: auto;
-  width: auto;
+  width: 40rem;
   backdrop-filter: blur(7px) saturate(100%);
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
@@ -222,6 +223,11 @@
   align-items: center;
   margin: 2rem;
   padding: 1rem;
+}
+
+.table {
+  width: 100%;
+  height: auto;
 }
 
 #sectionLogin, #sectionRegistro {
@@ -358,12 +364,12 @@ ul li {
     font-size: smaller;
   }
 
-  .section {
-    width: 90%;
+  .section, table {
+    width: 99%;
   }
 
   #sectionLogin, #sectionRegistro {
-    width: 90%;
+    width: 99%;
   }
 }
 

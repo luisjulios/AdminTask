@@ -1,3 +1,7 @@
+const user = localStorage.getItem('user');
+const nameUser = document.getElementById('btnPerfil');
+nameUser.textContent =`Hola! Bienvenido, ${user}.`;
+
 class Project {
   constructor(id, name, date) {
     this.id = id;
@@ -25,7 +29,7 @@ btnP.addEventListener('click', ()=>{
   const tr = document.createElement('tr');
   tr.innerHTML = `<tr>
                     <td class="text-center" scope="row">${id}</th>
-                    <td class="text-center">${project}</td>
+                    <td class="text-center title="${project}">${project}</td>
                     <td class="text-center"><span class="badge rounded-pill bg-info text-dark text-center">${tareas.length}</span></td>
                     <td class="text-center">${date}</td>
                     <td class="text-center"><i class="fas fa-edit m-1"></i> <i class="fas fa-trash-alt m-1"></i></td>
@@ -50,7 +54,7 @@ btnT.addEventListener('click', ()=>{
   const tr = document.createElement('tr');
   tr.innerHTML = `<tr>
                     <td class="text-center" scope="row">${id}</th>
-                    <td class="text-center d-inline-block text-truncate" style="max-width: 150px;">${task}</td>
+                    <td class="text-center title="${task}">${task}</td>
                     <td class="text-center" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
                     <td class="text-center"><i class="fas fa-edit m-1"></i> <i class="fas fa-trash-alt m-1"></i></td>
                   </tr>`;

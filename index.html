@@ -39,7 +39,7 @@
     <nav class="navbar navbar">
       <div class="container-fluid">
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="btnPerfil" data-bs-toggle="dropdown" aria-expanded="false">Luis Julio</button>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="btnPerfil" data-bs-toggle="dropdown" aria-expanded="false"></button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#miPerfil">Mi perfil</a></li>
             <li><a class="dropdown-item" type="button" href="login.html">Cerrar sesión</a></li>
@@ -52,7 +52,7 @@
       <h2>Listado de proyectos</h2>
       <button type="button" class="anadir btn btn-dark m-3" title="Añadir proyecto" data-bs-toggle="modal" data-bs-target="#modalProyecto">+</button>
       <div class="table-responsive">
-      <table class="table table-secondary table-striped table-sm table-hover">
+      <table class="table table-secondary table-striped table-sm table-hover w-auto">
         <thead>
           <tr>
             <th class="text-center" scope="col">#ID</th>
@@ -71,7 +71,7 @@
       <h2>Listado de tareas del proyecto</h2>
       <button type="button" class="anadir btn btn-dark mb-3" title="Añadir tarea" data-bs-toggle="modal" data-bs-target="#modalTarea" id="openModalTask">+</button>
       <div class="table-responsive">
-      <table class="table table-secondary table-striped table-sm table-hover">
+      <table class="table table-secondary table-striped table-sm table-hover w-auto">
         <thead>
           <tr>
             <th class="text-center" scope="col">#ID</th>
@@ -112,7 +112,7 @@
             <option selected disabled>Seleccione el proyecto al cual desea agregar las tareas</option>
           </select>
           <div class="form-floating">
-            <input type="tarea" class="form-control" id="tarea" placeholder="Tarea" autocomplete="off" required>
+            <input type="tarea" class="form-control" id="tarea" placeholder="Tarea" autocomplete="off" required maxlength="20">
             <label for="tarea">Nombre de la tarea</label>
           </div>
           <select class="form-select" aria-label="Default select example" id="prioridad" required>
@@ -141,7 +141,7 @@
         <div class="modal-body">
           <form id="formProjects">
             <div class="form-floating">
-              <input type="proyecto" class="form-control" id="proyecto" placeholder="Proyecto" autocomplete="off">
+              <input type="proyecto" class="form-control" id="proyecto" placeholder="Proyecto" autocomplete="off" maxlength="20">
               <label for="proyecto">Nombre del proyecto</label>
             </div>
             <div class="form-floating">

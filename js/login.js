@@ -25,7 +25,7 @@ if (typeof user !== 'string' || password !== '12345') {
     error.remove();
   }, 2000);
 }
-
+localStorage.setItem('user', user);
 });
 
 formLogin.addEventListener('submit', (e) => {
