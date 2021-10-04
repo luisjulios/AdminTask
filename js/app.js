@@ -65,19 +65,21 @@ formTasks.addEventListener('submit', (e)=>{
 
 
 
+
+
+
 const openModalTask = document.getElementById('openModalTask');
 openModalTask.addEventListener('click', () => {
   const listadoProyectos = document.getElementById('projects')
   proyectos.forEach(proyecto => {
   const option = document.createElement('option');
   option.value = proyecto.name;
-  option.setAttribute('data-id', `${id}`)
+  option.setAttribute('id', `${id}`);
   option.innerHTML = proyecto.name;
+  option.remove();
   listadoProyectos.appendChild(option);
   });
 })
-
-
 
 
 
