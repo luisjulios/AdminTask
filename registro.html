@@ -22,14 +22,23 @@
   <title>AdminTask - Registro</title>
 </head>
 
-<body class="body">
-  <header class="header container-fluid animate__animated animate__fadeIn">
-    <h1 class="box">
-      <p class="brand brand1">AdminTask</p>
-      <p class="brand brand2">AdminTask</p>
-    </h1>
+<body class="body bg-secondary" id="body">
+  <header class="header container-fluid animate__animated animate__fadeIn bg-light shadow-lg d-flex flex-row justify-content-start" id="header">
+    <div class="content">
+      <div class="content__container">
+        <p class="content__container__text">
+          Admin
+        </p>
+        <ul class="content__container__list">
+          <li class="content__container__list__item">projects !</li>
+          <li class="content__container__list__item">tasks !</li>
+          <li class="content__container__list__item">users !</li>
+          <li class="content__container__list__item">dreams !</li>
+        </ul>
+      </div>
+    </div>
   </header>
-  <section class="section container-fluid col-10 w-25 animate__animated animate__slideInLeft">
+  <section class="section container-fluid col-10 animate__animated animate__slideInLeft bg-light shadow-lg" id="sectionRegistro">
     <h2 class="text-center p-3">Crear cuenta</h2>
     <form action="#" method="post">
       <div class="form-floating">
@@ -41,8 +50,8 @@
         <label for="apellido">Apellido</label>
       </div>
       <div class="form-floating">
-        <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="off">
-        <label for="email">Email</label>
+        <input type="text" class="form-control" id="user" placeholder="ejemplo@correo.com" autocomplete="off">
+        <label for="user">User</label>
       </div>
       <div class="form-floating">
         <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
@@ -61,7 +70,7 @@
     <div class="wave circulo b"></div>
     <div class="wave circulo c"></div>
   </div>
-  <footer class="footer container-fluid d-flex justify-content-center animate__animated animate__fadeIn">
+  <footer class="footer container-fluid animate__animated animate__fadeIn bg-light shadow-lg" id="footer">
     <p class="footer__p text-center">AdminTask &copy; - Todos los derechos reservados.</p>
     <p class="footer__p text-center">Diseño y desarrollo por <a href="https://www.linkedin.com/in/antsth/"
         target="_blank">Luis Julio</a>.</p>

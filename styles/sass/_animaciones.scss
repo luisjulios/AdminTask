@@ -1,25 +1,3 @@
-.brand{
-  position: absolute;
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  transition: .5s ease;
-  margin: 0.5rem;
-  font-family: 'Anton', sans-serif;
-  color: #4e4f57;
-}
-.brand1 {
-  clip-path: polygon(0 0, 100% 0%, 100% 100%, 50% 0%, 0 100%);
-}
-.brand2 {
-  clip-path: polygon(0 100%, 50% 0%, 100% 100%, 100% 100%, 0 100%);
-}
-.header:hover .brand1 {
-  transform: translateY(-10px);
-}
-.header:hover .brand2 {
-  transform: translateY(10px);
-}
-
 .waves {
   position: fixed;
   bottom: -50;
@@ -70,4 +48,92 @@
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow:hidden;
+  font-family: 'Lato', sans-serif;
+  font-size: 35px;
+  height: 3rem;
+  line-height: 40px;
+  color: #212529;
+  z-index: 1;
+  margin-top: 3rem;
+  
+  &__container {
+    font-weight: 600;
+    overflow: hidden;
+    height: 40px;
+    padding: 0 40px;
+
+    &:before {
+      content: '[';
+      left: 0;
+    }
+
+    &:after {
+      content: ']';
+      position: absolute;
+      right: 0;
+    }
+
+    &:after, &:before {
+      position: absolute;
+      top: 0;
+      
+      color: #495057;
+      font-size: 42px;
+      line-height: 40px;
+      
+      -webkit-animation-name: opacity;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+      animation-name: opacity;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+
+    &__text {
+      display: inline;
+      float: left;
+      margin: 0;
+    }
+
+    &__list {
+      margin-top: 0;
+      padding-left: 110px;
+      text-align: left;
+      list-style: none;
+      
+      -webkit-animation-name: change;
+      -webkit-animation-duration: 10s;
+      -webkit-animation-iteration-count: infinite;
+      animation-name: change;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+
+      &__item {
+        line-height:40px;
+        margin:0;
+      }
+    }
+  }
+}
+@keyframes opacity {
+  0%, 100% {opacity:0;}
+  50% {opacity:1;}
+}
+
+@keyframes change {
+  0%, 12.66%, 100% {transform:translate3d(0,0,0);}
+  16.66%, 29.32% {transform:translate3d(0,-25%,0);}
+  33.32%,45.98% {transform:translate3d(0,-50%,0);}
+  49.98%,62.64% {transform:translate3d(0,-75%,0);}
+  66.64%,79.3% {transform:translate3d(0,-50%,0);}
+  83.3%,95.96% {transform:translate3d(0,-25%,0);}
 }

@@ -24,11 +24,11 @@ btnP.addEventListener('click', ()=>{
   const tableProjects = document.getElementById('tableProjects')
   const tr = document.createElement('tr');
   tr.innerHTML = `<tr>
-                    <th scope="row">${id}</th>
-                    <td>${project}</td>
-                    <td>${tareas.length}</td>
-                    <td>${date}</td>
-                    <td><i class="fas fa-edit m-1"></i> <i class="fas fa-trash-alt m-1"></i></td>
+                    <td class="text-center" scope="row">${id}</th>
+                    <td class="text-center">${project}</td>
+                    <td class="text-center"><span class="badge rounded-pill bg-info text-dark text-center">${tareas.length}</span></td>
+                    <td class="text-center">${date}</td>
+                    <td class="text-center"><i class="fas fa-edit m-1"></i> <i class="fas fa-trash-alt m-1"></i></td>
                   </tr>`;
   tableProjects.appendChild(tr);
   let proyecto = new Project(id, project, date);
@@ -49,38 +49,41 @@ btnT.addEventListener('click', ()=>{
   const tableTasks = document.getElementById('tableTasks')
   const tr = document.createElement('tr');
   tr.innerHTML = `<tr>
-                    <th scope="row">${id}</th>
-                    <td>${task}</td>
-                    <td>${priority}</td>
-                    <td><i class="fas fa-edit m-1"></i> <i class="fas fa-trash-alt m-1"></i></td>
+                    <td class="text-center" scope="row">${id}</th>
+                    <td class="text-center d-inline-block text-truncate" style="max-width: 150px;">${task}</td>
+                    <td class="text-center" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
+                    <td class="text-center"><i class="fas fa-edit m-1"></i> <i class="fas fa-trash-alt m-1"></i></td>
                   </tr>`;
   tableTasks.appendChild(tr);
   let tarea = new Task(id, task, priority);
   tareas.push(tarea);
   formTasks.reset();
+  const prioritys = document.getElementsByClassName('badge');
+  for (const priority of prioritys) {
+    if (priority.textContent == 'Alta') {
+      priority.classList.add('bg-danger')
+    }
+    if (priority.textContent == 'Media') {
+      priority.classList.add('bg-warning')
+    }
+    if (priority.textContent == 'Baja') {
+      priority.classList.add('bg-success')
+    }
+}
 })
 formTasks.addEventListener('submit', (e)=>{
   e.preventDefault();
 })
 
-
-
-
-
-
-const openModalTask = document.getElementById('openModalTask');
-openModalTask.addEventListener('click', () => {
-  const listadoProyectos = document.getElementById('projects')
-  proyectos.forEach(proyecto => {
-  const option = document.createElement('option');
-  option.value = proyecto.name;
-  option.setAttribute('id', `${id}`);
-  option.innerHTML = proyecto.name;
-  option.remove();
-  listadoProyectos.appendChild(option);
-  });
-})
-
+  // const listadoProyectos = document.getElementById('projects')
+  // proyectos.forEach(proyecto => {
+  // const option = document.createElement('option');
+  // option.value = proyecto.name;
+  // option.setAttribute('id', `${id}`);
+  // option.innerHTML = proyecto.name;
+  // option.remove();
+  // listadoProyectos.appendChild(option);
+  // });
 
 
 
@@ -89,18 +92,25 @@ openModalTask.addEventListener('click', () => {
 
 
 const body = document.getElementById('body');
-const footer = document.getElementById('footer')
-const header = document.getElementById('header')
+const footer = document.getElementById('footer');
+const header = document.getElementById('header');
 const toggle = document.getElementById('toggle');
-const tables = document.getElementsByTagName('table')
+const tables = document.getElementsByTagName('table');
+const sections = document.getElementsByTagName('section');
+const btnPerfil = document.getElementById('btnPerfil');
 toggle.addEventListener('click', () => {
-  body.classList.toggle('dark');
-  body.classList.toggle('light');
-  footer.classList.toggle('light');
-  footer.classList.toggle('dark');
-  header.classList.toggle('light');
-  header.classList.toggle('dark');
+  body.classList.toggle('bg-secondary');
+  body.classList.toggle('bg-dark');
+  footer.classList.toggle('bg-light');
+  footer.classList.toggle('bg-secondary');
+  header.classList.toggle('bg-light');
+  header.classList.toggle('bg-secondary');
+  btnPerfil.classList.toggle('btn-dark')
   for (const table of tables) {
     table.classList.toggle('table-dark');
+  }
+  for (const section of sections) {
+    section.classList.toggle('bg-light');
+    section.classList.toggle('bg-secondary');
   }
 })
