@@ -49,21 +49,38 @@
 		background-position: 0% 50%;
 	}
 }
-
+@media (max-width: 992px) {
+  html {
+    padding-bottom: 20rem;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .footer__p {
+    font-size: smaller;
+  }
+  .section {
+    width: 90%;
+  }
+  #sectionLogin, #sectionRegistro{
+    width: 90%;
+  }
+}
 
 .content {
   position: absolute;
-  top: 0;
+  top: 7%;
   left: 50%;
   transform: translate(-50%, -50%);
+  height: 130px;
   overflow:hidden;
-  font-family: 'Lato', sans-serif;
   font-size: 35px;
-  height: 3rem;
   line-height: 40px;
   color: #212529;
-  z-index: 1;
   margin-top: 3rem;
+  font-weight: bold;
   
   &__container {
     font-weight: 600;
@@ -71,18 +88,18 @@
     height: 40px;
     padding: 0 40px;
 
-    &:before {
+    &::before {
       content: '[';
       left: 0;
     }
 
-    &:after {
+    &::after {
       content: ']';
       position: absolute;
       right: 0;
     }
 
-    &:after, &:before {
+    &::after, &::before {
       position: absolute;
       top: 0;
       
@@ -124,9 +141,11 @@
     }
   }
 }
+
 @keyframes opacity {
-  0%, 100% {opacity:0;}
+  100% {opacity:0;}
   50% {opacity:1;}
+  100% {opacity:0;}
 }
 
 @keyframes change {
