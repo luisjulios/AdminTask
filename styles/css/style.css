@@ -9,80 +9,6 @@
   text-decoration: none;
 }
 
-.waves {
-  position: fixed;
-  bottom: -50;
-  height: 527px;
-  width: 100vw;
-  overflow: hidden;
-  z-index: -1;
-}
-.waves .wave {
-  position: fixed;
-  left: -180px;
-  bottom: 0;
-  width: 2402px;
-  height: 427px;
-  background: url(/img/waves.png) center bottom no-repeat;
-  animation: 25s wave ease infinite alternate;
-}
-.waves .wave.a {
-  background-position: 0 -854px;
-}
-.waves .wave.b {
-  background-position: 0 -427px;
-  animation-delay: 0.6s;
-}
-.waves .wave.c {
-  background-position: 0 0;
-  animation-delay: 1.2s;
-}
-
-@keyframes wave {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-80px, 30px);
-  }
-  100% {
-    transform: translate(160px, -60px);
-  }
-}
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-@media (max-width: 992px) {
-  html {
-    padding-bottom: 20rem;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  .footer__p {
-    font-size: smaller;
-  }
-
-  .section {
-    width: 90%;
-  }
-
-  #sectionLogin, #sectionRegistro {
-    width: 90%;
-  }
-}
 .content {
   position: absolute;
   top: 5%;
@@ -185,10 +111,15 @@
   background-position: center;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   color: #000000;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  z-index: -1;
 }
 
 .header {
@@ -309,22 +240,9 @@ button.anadir:hover {
   background-color: #000;
 }
 
-ul {
-  width: 100%;
-}
-ul li {
-  height: auto;
-  width: 100%;
-  margin: auto;
-  border: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .footer {
   width: 100vw;
-  height: 5rem;
+  height: 3rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -365,11 +283,11 @@ ul li {
   }
 
   .section, table {
-    width: 99%;
+    width: 98%;
   }
 
   #sectionLogin, #sectionRegistro {
-    width: 99%;
+    width: 98%;
   }
 }
 

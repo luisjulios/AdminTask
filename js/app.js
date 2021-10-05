@@ -1,6 +1,6 @@
 const user = localStorage.getItem('user');
 const nameUser = document.getElementById('btnPerfil');
-nameUser.textContent =`Hola! Bienvenido, ${user}.`;
+nameUser.innerText =`Hola! Bienvenido, ${user}.`;
 
 class Project {
   constructor(id, name, date) {
@@ -88,13 +88,7 @@ formTasks.addEventListener('submit', (e)=>{
   // option.remove();
   // listadoProyectos.appendChild(option);
   // });
-
-
-
-
-
-
-
+  
 const body = document.getElementById('body');
 const footer = document.getElementById('footer');
 const header = document.getElementById('header');
