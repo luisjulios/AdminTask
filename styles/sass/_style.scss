@@ -1,6 +1,5 @@
 @import "reset";
 @import "animaciones";
-@import "responsive";
 
 html {
   scroll-behavior: smooth;
@@ -154,12 +153,12 @@ button.anadir {
   }
 }
 
-@media (max-width: 425px) {
+@media (min-width: 425px) {
   .header {
     margin-bottom: 4rem;
   }
   .section {
-    width: auto;
+    width: 25rem;
     form {
       width: 20rem;
     }
