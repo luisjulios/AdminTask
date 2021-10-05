@@ -5,7 +5,7 @@
         opacity: 1,
         size: 4,
         size_random: true,
-        nb: 250,
+        nb: 300,
         line_linked: {
           enable_auto: true,
           distance: 100,
@@ -20,7 +20,7 @@
         },
         anim: {
           enable: true,
-          speed: 1
+          speed: 0.2
         }
       },
       interactivity: {

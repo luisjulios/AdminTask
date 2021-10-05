@@ -1,14 +1,15 @@
 @import "responsive";
 @import "reset";
 @import "animaciones";
+@import "responsive";
+html {
+  scroll-behavior: smooth;
+}
 
 .body {
   height: auto;
   width: 100vw;
-  // background: url(/img/bg.png) center bottom no-repeat;
-  background-blend-mode: normal, normal, screen, overlay, normal;
-  background-attachment: fixed;
-  background-position: center;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   color: #000000;
@@ -28,7 +29,7 @@ canvas {
   justify-content: flex-end;
   align-items: center;
   top: 0;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 .main {
   width: 100%;
@@ -41,7 +42,7 @@ canvas {
 }
 .section {
   height: auto;
-  width: 40rem;
+  width: 50rem;
   backdrop-filter: blur(7px) saturate(100%);
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
@@ -52,11 +53,11 @@ canvas {
   padding: 1rem;
 }
 .table{
-  width: 100%;
+  width: 30rem;
   height: auto;
 }
 #sectionLogin, #sectionRegistro{
-  width: 40rem;
+  width: 30rem;
   margin: auto;
 }
 form {
@@ -152,24 +153,4 @@ button.anadir {
   }
   }
 
-}
-
-@media (max-width: 992px) {
-  html {
-    padding-bottom: 20rem;
-  }
-  main {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  .footer__p {
-    font-size: smaller;
-  }
-  .section, table {
-    width: 98%;
-  }
-  #sectionLogin, #sectionRegistro{
-    width: 98%;
-  }
 }
