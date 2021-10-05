@@ -1,26 +1,3 @@
-@media (max-width: 992px) {
-  html {
-    padding-bottom: 20rem;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  .footer__p {
-    font-size: smaller;
-  }
-
-  .section, table {
-    width: 40rem;
-  }
-
-  #sectionLogin, #sectionRegistro {
-    width: 30rem;
-  }
-}
 * {
   margin: 0;
   padding: 0;
@@ -34,10 +11,10 @@
 
 .content {
   position: absolute;
-  top: 5%;
+  top: 2%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 130px;
+  height: 100px;
   overflow: hidden;
   font-size: 35px;
   line-height: 40px;
@@ -126,29 +103,6 @@
     transform: translate3d(0, -25%, 0);
   }
 }
-@media (max-width: 992px) {
-  html {
-    padding-bottom: 20rem;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  .footer__p {
-    font-size: smaller;
-  }
-
-  .section, table {
-    width: 40rem;
-  }
-
-  #sectionLogin, #sectionRegistro {
-    width: 30rem;
-  }
-}
 html {
   scroll-behavior: smooth;
 }
@@ -156,12 +110,12 @@ html {
 .body {
   height: auto;
   width: 100vw;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   color: #000000;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  padding-bottom: 5rem;
 }
 
 canvas {
@@ -178,13 +132,12 @@ canvas {
   justify-content: flex-end;
   align-items: center;
   top: 0;
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem;
 }
 
 .main {
   width: 100%;
   height: auto;
-  margin: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -193,7 +146,7 @@ canvas {
 
 .section {
   height: auto;
-  width: 50rem;
+  width: 60rem;
   backdrop-filter: blur(7px) saturate(100%);
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
@@ -204,14 +157,15 @@ canvas {
   padding: 1rem;
 }
 
+#sectionRegistro, #sectionLogin {
+  width: 30rem;
+  margin: auto;
+}
+
 .table {
   width: 30rem;
   height: auto;
-}
-
-#sectionLogin, #sectionRegistro {
-  width: 30rem;
-  margin: auto;
+  font-size: 0.8rem;
 }
 
 form {
@@ -233,7 +187,7 @@ input[type=submit] {
   color: #ffffff;
   border: none;
   border-radius: 1rem;
-  margin: 1rem;
+  margin: 0 1rem;
   padding: 1rem;
 }
 input[type=submit]:hover {
@@ -290,7 +244,7 @@ button.anadir:hover {
 
 .footer {
   width: 100vw;
-  height: 3rem;
+  height: 4rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -302,10 +256,9 @@ button.anadir:hover {
 }
 .footer .footer__p {
   margin: auto;
-  padding: 1rem;
 }
 .footer .form-check {
-  margin-right: 2rem;
+  margin-left: 2rem;
 }
 .footer .form-check .form-check-input {
   background-color: #dadada;
@@ -313,6 +266,41 @@ button.anadir:hover {
 .footer .form-check .form-check-input:checked {
   background-color: #212529;
   border-color: #757575;
+}
+
+@media (max-width: 425px) {
+  .header {
+    margin-bottom: 4rem;
+  }
+
+  .section {
+    width: auto;
+  }
+  .section form {
+    width: 20rem;
+  }
+
+  #sectionRegistro {
+    width: 25rem;
+    height: 35rem;
+    margin: 0 auto;
+  }
+
+  #sectionLogin {
+    width: 25rem;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .footer__p {
+    font-size: smaller;
+  }
+
+  .table {
+    width: 23rem;
+    height: auto;
+    font-size: 0.8rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

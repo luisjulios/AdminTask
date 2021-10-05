@@ -52,7 +52,7 @@
       <h2>Listado de proyectos</h2>
       <button type="button" class="anadir btn btn-dark m-3" title="Añadir proyecto" data-bs-toggle="modal" data-bs-target="#modalProyecto">+</button>
       <div class="table-responsive">
-      <table class="table table-secondary table-striped table-sm table-hover w-auto">
+      <table class="table table-secondary table-striped table-sm table-hover">
         <thead>
           <tr>
             <th class="text-center" scope="col">#ID</th>
@@ -100,7 +100,7 @@
             <option selected disabled>Seleccione el proyecto al cual desea agregar las tareas</option>
           </select>
           <div class="form-floating">
-            <input type="tarea" class="form-control" id="tarea" placeholder="Tarea" autocomplete="off" required maxlength="20">
+            <input type="tarea" class="form-control" id="tarea" autocomplete="off" required maxlength="20">
             <label for="tarea">Nombre de la tarea</label>
           </div>
           <select class="form-select" aria-label="Default select example" id="prioridad" required>
@@ -129,7 +129,7 @@
         <div class="modal-body">
           <form id="formProjects">
             <div class="form-floating">
-              <input type="proyecto" class="form-control" id="proyecto" placeholder="Proyecto" autocomplete="off" maxlength="20">
+              <input type="proyecto" class="form-control" id="proyecto" autocomplete="off" maxlength="20">
               <label for="proyecto">Nombre del proyecto</label>
             </div>
             <div class="form-floating">
