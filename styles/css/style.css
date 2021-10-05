@@ -268,7 +268,7 @@ button.anadir:hover {
   border-color: #757575;
 }
 
-@media (min-width: 425px) {
+@media (max-width: 425px) {
   .header {
     margin-bottom: 4rem;
   }

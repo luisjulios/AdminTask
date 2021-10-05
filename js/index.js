@@ -95,6 +95,7 @@ formTasks.addEventListener('submit', (e)=>{
 // Iterar listado de proyectos agregados para seleccionarlo al momento de agregarle tareas
   const listadoProyectos = document.getElementById('projects')
   btnP.addEventListener('click', () => {
+    listadoProyectos.innerHTML = '';
     proyectos.forEach(proyecto => {
       const option = document.createElement('option');
       option.setAttribute('id', `${id}`);
