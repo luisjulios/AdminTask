@@ -24,7 +24,7 @@ const agregarProyecto = () => {
     tr.innerHTML = `<tr>
                       <td class="text-center" scope="row">${id}</th>
                       <td class="text-center title="${project}">${project}</td>
-                      <td class="text-center"><span class="badge rounded-pill bg-info text-dark text-center">${tareas.length}</span></td>
+                      <td class="text-center"><span class="badge rounded-pill bg-info text-dark text-center" id="nTareas">${tareas.length}</span></td>
                       <td class="text-center">${date}</td>
                       <td class="text-center"><i class="fas fa-edit m-1"></i> <i class="fas fa-trash-alt m-1"></i></td>
                     </tr>`;
@@ -33,6 +33,8 @@ const agregarProyecto = () => {
     proyectos.push(proyecto);
   }
   formProjects.reset();
+  console.log(proyectos);
+
 }
 const btnP = document.getElementById('btnP')
 btnP.addEventListener('click', agregarProyecto);
@@ -67,7 +69,10 @@ const agregarTarea = () => {
                     </tr>`;
     tableTasks.appendChild(tr);
     let tarea = new Task(id, task, priority);
-    tareas.push(tarea);
+    const proyecto = document.getElementById('projects')
+    const projectId = proyecto.value;
+    const projectIndex = proyectos.findIndex(proyecto => proyecto.id == projectId)
+    proyectos[projectIndex].tasks.push(tarea)  
   }
   // Colorear prioridades
   const badge = document.getElementsByClassName('badge');
@@ -84,29 +89,34 @@ const agregarTarea = () => {
   }
   formTasks.reset();
 }
+const actualizarNTareas = () => {
+  // Cantidad de tareas asociadas a un proyecto
+const nTareas = document.getElementById('nTareas');
+      nTareas.innerHTML = ''
+      tareas.forEach(tarea => {
+        nTareas.innerText = tareas.length;
+      });
+}
 const btnT = document.getElementById('btnT')
-btnT.addEventListener('click', agregarTarea)
+btnT.addEventListener('click', () => {
+  agregarTarea()
+  actualizarNTareas();
+})
 formTasks.addEventListener('submit', (e)=>{
   e.preventDefault();
 })
-
-
-
 // Iterar listado de proyectos agregados para seleccionarlo al momento de agregarle tareas
   const listadoProyectos = document.getElementById('projects')
   btnP.addEventListener('click', () => {
     listadoProyectos.innerHTML = '';
     proyectos.forEach(proyecto => {
       const option = document.createElement('option');
-      option.setAttribute('id', `${id}`);
-      option.innerText = proyecto.name;
+      option.setAttribute('id', 'pOption');
+      option.value = proyecto.id;
+      option.innerHTML = proyecto.name;
       listadoProyectos.appendChild(option);
       });
   })
-
-
-
-
 
 
 
