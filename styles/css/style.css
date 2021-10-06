@@ -146,7 +146,7 @@ canvas {
 
 .section {
   height: auto;
-  width: 60rem;
+  width: 50rem;
   backdrop-filter: blur(7px) saturate(100%);
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
@@ -268,7 +268,7 @@ button.anadir:hover {
   border-color: #757575;
 }
 
-@media (max-width: 425px) {
+@media (width: 425px) {
   .header {
     margin-bottom: 4rem;
   }
