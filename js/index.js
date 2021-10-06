@@ -24,7 +24,6 @@ const agregarProyecto = () => {
     tr.innerHTML = `<tr>
                       <td class="text-center" scope="row">${id}</th>
                       <td class="text-center title="${project}">${project}</td>
-                      <td class="text-center"><span class="badge rounded-pill bg-info text-dark text-center" id="nTareas">${tareas.length}</span></td>
                       <td class="text-center">${date}</td>
                       <td class="text-center"><i class="fas fa-edit m-1"></i> <i class="fas fa-trash-alt m-1"></i></td>
                     </tr>`;
@@ -51,7 +50,6 @@ class Task {
     this.priority = priority;
   }
 }
-let tareas = [];
 const agregarTarea = () => {
   const inputTask = document.getElementById('tarea');
   const selectPriority= document.getElementById('prioridad');
@@ -89,18 +87,9 @@ const agregarTarea = () => {
   }
   formTasks.reset();
 }
-const actualizarNTareas = () => {
-  // Cantidad de tareas asociadas a un proyecto
-const nTareas = document.getElementById('nTareas');
-      nTareas.innerHTML = ''
-      tareas.forEach(tarea => {
-        nTareas.innerText = tareas.length;
-      });
-}
 const btnT = document.getElementById('btnT')
 btnT.addEventListener('click', () => {
   agregarTarea()
-  actualizarNTareas();
 })
 formTasks.addEventListener('submit', (e)=>{
   e.preventDefault();
