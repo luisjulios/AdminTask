@@ -17,6 +17,9 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles/css/style.css">
+  <script defer src="js/registro.js"></script>
+  <script defer src="js/particles.min.js"></script>
+	<script defer src="js/particulas.js"></script>
   <title>AdminTask - Registro</title>
 </head>
 
@@ -38,15 +41,11 @@
   </header>
   <section class="section container-fluid animate__animated animate__slideInLeft bg-light shadow-lg" id="sectionRegistro">
     <h2 class="text-center p-3">Crear cuenta</h2>
-    <form action="#" method="post">
+    <form id="formCrearCuenta">
       <div class="form-floating">
         <input type="name" class="form-control" id="name" placeholder="Nombre" autocomplete="off">
         <label for="name">Nombre</label>
-      </div>
-      <div class="form-floating">
-        <input type="apellido" class="form-control" id="apellido" placeholder="apellido" autocomplete="off">
-        <label for="apellido">Apellido</label>
-      </div>
+      </div>  
       <div class="form-floating">
         <input type="text" class="form-control" id="user" placeholder="ejemplo@correo.com" autocomplete="off">
         <label for="user">User</label>
@@ -59,7 +58,7 @@
         <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmación" autocomplete="off">
         <label for="password">Confirma tu contraseña</label>
       </div>
-      <input type="submit" value="Crear cuenta" class="loginYRegistro">
+      <input type="submit" value="Crear cuenta" class="loginYRegistro" id="crearCuenta">
     </form>
     <p class="text-center">Si ya tienes cuenta da click <a href="login.html">aquí</a></p>
   </section>
@@ -69,9 +68,7 @@
         target="_blank">Luis Julio</a>.</p>
     <p></p>
   </footer>
-  <script src="js/app.js"></script>
-  <script src="js/particles.min.js"></script>
-	<script src="js/particulas.js"></script>
+
 </body>
 
 </html>

@@ -51,7 +51,7 @@ canvas {
   margin: 2rem;
   padding: 1rem;
 }
-#sectionRegistro, #sectionLogin {
+#sectionRegistro, #sectionLogin, #section404 {
   width: 30rem;
   margin: auto;
 }
@@ -66,7 +66,6 @@ form {
   width: 100%;
 }
 input.form-control, select.form-select  {
-  background-color: #ffffff;
   width: 100%;
   border-radius: 1rem;
   margin: 0.5rem;
@@ -182,4 +181,15 @@ button.anadir {
   height: auto;
   font-size: 0.8rem;
 }
+}
+.error {
+  border: 3px solid #dc3545;
+  background-color: #dc35460c;
+}
+.exito {
+  border: 3px solid #198754;
+  background-color: #19875410;
+}
+.btn-check:focus+.btn, .btn:focus {
+  box-shadow: none;
 }
