@@ -1,7 +1,7 @@
-const name = localStorage.getItem('name');
+const nombre = localStorage.getItem('name');
 const user = localStorage.getItem('user');
 const nameUser = document.getElementById('btnPerfil');
-nameUser.innerText =`Hola! Bienvenido, ${user}.`;
+nameUser.innerText =`Hola! Bienvenido, ${nombre}.`;
 //Declarar estructura JSON para definir datos iniciales para consumir por el simular
 
 let proyectos = [
@@ -169,7 +169,7 @@ const agregarTarea = () => {
     tr.innerHTML = `<tr>
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0 title="${task}">${task}</td>
-                      <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center p-0">${priority}</span></td>
+                      <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
                       <td class="text-center p-0"><button class="btn far fa-check-circle" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger"></button></td>
                     </tr>`;
     tableTasks.appendChild(tr);
