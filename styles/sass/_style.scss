@@ -41,7 +41,7 @@ canvas {
 }
 .section {
   height: auto;
-  width: 50rem;
+  width: 40rem;
   backdrop-filter: blur(7px) saturate(100%);
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
@@ -59,18 +59,26 @@ canvas {
   width: 30rem;
   height: auto;
   font-size: 0.8rem;
+  vertical-align: 1rem;
 }
 form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+#projects  {
+  width: 10rem;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  padding: 0.3rem;
+}
 input.form-control, select.form-select  {
   width: 100%;
   border-radius: 1rem;
   margin: 0.5rem;
-  padding: 0.1rem;
+  padding: 0.3rem;
 }
+
 input[type='submit'] {
   background-color: #434343;
   color: #ffffff;
@@ -117,14 +125,16 @@ button.anadir {
     }
   }
 }
-.barra {
-  height: 13rem;
-  .progress{
-    width: 30%;
-    margin: 3rem auto;
-    .progress-bar {
-    background-color: #000;
-  }}
+.error {
+  border: 3px solid #dc3545;
+  background-color: #dc35460c;
+}
+.exito {
+  border: 3px solid #198754;
+  background-color: #19875410;
+}
+.btn-check:focus+.btn, .btn:focus {
+  box-shadow: none;
 }
 .footer {
   width: 100vw;
@@ -152,23 +162,23 @@ button.anadir {
   }
 }
 
-@media (width: 425px) {
+@media (width: 375px) {
   .header {
     margin-bottom: 4rem;
   }
   .section {
-    width: 25rem;
+    width: 23rem;
     form {
       width: 20rem;
     }
   }
   #sectionRegistro{
-    width: 25rem;
+    width: 23rem;
     height: 35rem;
     margin: 0 auto;
   }
   #sectionLogin {
-    width: 25rem;
+    width: 23rem;
     height: auto;
     margin: 0 auto;
   }
@@ -177,19 +187,98 @@ button.anadir {
   }
   
 .table{
-  width: 23rem;
+  width: 22rem;
   height: auto;
   font-size: 0.8rem;
 }
 }
-.error {
-  border: 3px solid #dc3545;
-  background-color: #dc35460c;
+@media (width: 425px) {
+  .header {
+    margin-bottom: 4rem;
+  }
+  .section {
+    width: 27rem;
+    form {
+      width: 20rem;
+    }
+  }
+  #sectionRegistro{
+    width: 27rem;
+    height: 35rem;
+    margin: 0 auto;
+  }
+  #sectionLogin {
+    width: 27rem;
+    height: auto;
+    margin: 0 auto;
+  }
+    .footer__p {
+      font-size: smaller;
+  }
+  
+.table{
+  width: 22rem;
+  height: auto;
+  font-size: 0.8rem;
 }
-.exito {
-  border: 3px solid #198754;
-  background-color: #19875410;
 }
-.btn-check:focus+.btn, .btn:focus {
-  box-shadow: none;
+@media (width: 576px) {
+  .header {
+    margin-bottom: 4rem;
+  }
+  .section {
+    width: 29rem;
+    form {
+      width: 20rem;
+    }
+  }
+  #sectionRegistro{
+    width: 29rem;
+    height: 35rem;
+    margin: 0 auto;
+  }
+  #sectionLogin {
+    width: 29rem;
+    height: auto;
+    margin: 0 auto;
+  }
+    .footer__p {
+      font-size: smaller;
+  }
+  
+.table{
+  width: 22rem;
+  height: auto;
+  font-size: 0.8rem;
+}
+}
+@media (width: 768px) {
+  .header {
+    margin-bottom: 4rem;
+  }
+  .section {
+    width: 40rem;
+    form {
+      width: 20rem;
+    }
+  }
+  #sectionRegistro{
+    width: 40rem;
+    height: 35rem;
+    margin: 0 auto;
+  }
+  #sectionLogin {
+    width: 40rem;
+    height: auto;
+    margin: 0 auto;
+  }
+    .footer__p {
+      font-size: smaller;
+  }
+  
+.table{
+  width: 22rem;
+  height: auto;
+  font-size: 0.8rem;
+}
 }

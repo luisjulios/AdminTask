@@ -17,9 +17,12 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
   <script defer src="https://kit.fontawesome.com/a979aec070.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script defer src="js/particles.min.js"></script>
 	<script defer src="js/particulas.js"></script>
   <script defer src="js/index.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="styles/css/style.css">
   <title>AdminTask - Administrador de tareas</title>
 </head>
@@ -70,8 +73,11 @@
     </div>
     </section>
     <section class="section container-fluid bg-light shadow-lg">
-      <h2>Listado de tareas del proyecto</h2>
+      <h2>Listado de tareas</h2>
       <button type="button" class="anadir btn btn-dark mb-3" title="Añadir tarea" data-bs-toggle="modal" data-bs-target="#modalTarea" id="openModalTask">+</button>
+      <select class="form-select" aria-label="Default select example" id="projects">
+        <option id="all" selected value="all" disabled>Ver todas</option>
+      </select>
       <div class="table-responsive">
       <table class="table table-secondary table-striped table-sm table-hover">
         <thead>
@@ -98,15 +104,12 @@
       </div>
       <div class="modal-body">
         <form id="formTasks">
-          <select class="form-select" aria-label="Default select example" id="projects">
-            <option selected disabled id="option0">Seleccione el proyecto al cual desea agregar las tareas</option>
-          </select>
           <div class="form-floating">
             <input type="tarea" class="form-control" id="tarea" autocomplete="off" required maxlength="20">
             <label for="tarea">Nombre de la tarea</label>
           </div>
           <select class="form-select" aria-label="Default select example" id="prioridad" required>
-            <option selected disabled>Seleccione una prioridad para la tarea</option>
+            <option selected disabled>Seleccione una prioridad</option>
             <option value="Alta">Alta</option>
             <option value="Media">Media</option>
             <option value="Baja">Baja</option>
@@ -135,7 +138,7 @@
               <label for="proyecto">Nombre del proyecto</label>
             </div>
             <div class="form-floating">
-              <input required autocomplete="off" type="date" class="form-control" name="fecha" id="fecha">
+              <input required autocomplete="off" type="text" class="form-control" name="fecha" id="fecha">
               <label for="fecha">Fecha</label>
             </div>
           </form>

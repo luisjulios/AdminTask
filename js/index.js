@@ -11,22 +11,22 @@ let proyectos = [
       "date": "2021-10-31",
       "tasks": [
           {
-              "id": "896",
+              "id": "1308",
               "name": "Definir HTML",
               "priority": "Alta"
           },
           {
-              "id": "706",
+              "id": "1308",
               "name": "Definir CSS",
               "priority": "Media"
           },
           {
-              "id": "543",
+              "id": "1308",
               "name": "Definir JS",
               "priority": "Baja"
           },
           {
-              "id": "792",
+              "id": "1308",
               "name": "Responsive",
               "priority": "Media"
           }
@@ -38,22 +38,22 @@ let proyectos = [
     "date": "2021-11-01",
     "tasks": [
         {
-            "id": "785",
+            "id": "4581",
             "name": "Definir HTML",
             "priority": "Alta"
         },
         {
-            "id": "817",
+            "id": "4581",
             "name": "Definir CSS",
             "priority": "Media"
         },
         {
-            "id": "432",
+            "id": "4581",
             "name": "Definir JS",
             "priority": "Baja"
         },
         {
-            "id": "681",
+            "id": "4581",
             "name": "Desarrollar galería",
             "priority": "Media"
         }
@@ -87,29 +87,35 @@ const taskDone = () => {
     })
   }
 }
-proyectos.forEach(proyecto => {
-  const tableProjects = document.getElementById('tableProjects')
-  const tr = document.createElement('tr');
-  tr.innerHTML = `<tr>
-                    <td class="text-center p-0" scope="row">${proyecto.id}</th>
-                    <td class="text-center title="${proyecto.name}">${proyecto.name}</td>
-                    <td class="text-center p-0">${proyecto.date}</td>
-                    <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger"></button></td>
-                  </tr>`;
-  tableProjects.appendChild(tr);
-  proyecto['tasks'].forEach(task => {
-  const tableTasks = document.getElementById('tableTasks')
-  const tr = document.createElement('tr');
-  tr.innerHTML = `<tr>
-                    <td class="text-center p-0" scope="row">${task.id}</th>
-                    <td class="text-center p-0" title="${task.name}">${task.name}</td>
-                    <td class="text-center p-0" value="${task.priority}"><span class="badge rounded-pill text-center">${task.priority}</span></td>
-                    <td class="text-center p-0"><button class="btn far fa-check-circle" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger"></button></td>
-                  </tr>`;
-  tableTasks.appendChild(tr);
-});
-priorityColor();
-});
+const tableProjects = document.getElementById('tableProjects')
+const tableTasks = document.getElementById('tableTasks')
+const mostrarProyectosYTareas = (array) => {
+  tableProjects.innerHTML = '';
+  tableTasks.innerHTML = '';
+  array.forEach(proyecto => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<tr>
+                      <td class="text-center p-0" scope="row">${proyecto.id}</th>
+                      <td class="text-center p-0" title=${proyecto.name}">${proyecto.name}</td>
+                      <td class="text-center p-0">${proyecto.date}</td>
+                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1"></button></td>
+                    </tr>`;
+    tableProjects.appendChild(tr);
+
+    proyecto['tasks'].forEach(task => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<tr>
+                      <td class="text-center p-0" scope="row">${proyecto.id}</th>
+                      <td class="text-center p-0" title="${task.name}">${task.name}</td>
+                      <td class="text-center p-0" value="${task.priority}"><span class="badge rounded-pill text-center">${task.priority}</span></td>
+                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1"></button></td>
+                    </tr>`;
+    tableTasks.appendChild(tr);
+  });
+  priorityColor();
+  });
+}
+mostrarProyectosYTareas(proyectos);
 
 // Proyectos
 class Project {
@@ -160,24 +166,24 @@ class Task {
 const agregarTarea = () => {
   const inputTask = document.getElementById('tarea');
   const selectPriority= document.getElementById('prioridad');
-  id = Date.now().toString().slice(10, 13);
   let task = inputTask.value;
   let priority = selectPriority.value;
-  if (task !== '' && priority !== '' && task !== ' ' && priority !== ' ') {
+  const proyecto = document.getElementById('projects')
+  const projectId = proyecto.value;
+  const projectIndex = proyectos.findIndex(proyecto => proyecto.id == projectId)
+  if (task !== '' && priority !== '' && task !== ' ' && priority !== ' ' && projectId !== 'all') {
     const tableTasks = document.getElementById('tableTasks')
     const tr = document.createElement('tr');
     tr.innerHTML = `<tr>
-                      <td class="text-center p-0" scope="row">${id}</th>
-                      <td class="text-center p-0 title="${task}">${task}</td>
+                      <td class="text-center p-0" scope="row">${projectId}</th>
+                      <td class="text-center p-0" title="${task}">${task}</td>
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger"></button></td>
+                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1"></button></td>
                     </tr>`;
     tableTasks.appendChild(tr);
     let tarea = new Task(id, task, priority);
-    const proyecto = document.getElementById('projects')
-    const projectId = proyecto.value;
-    const projectIndex = proyectos.findIndex(proyecto => proyecto.id == projectId)
     proyectos[projectIndex].tasks.push(tarea)  
+    console.log(projectId);
   }
   formTasks.reset();
   priorityColor();
@@ -190,15 +196,30 @@ formTasks.addEventListener('submit', (e)=>{
 // Iterar listado de proyectos agregados para seleccionarlo al momento de agregarle tareas
   const listadoProyectos = document.getElementById('projects')
   btnP.addEventListener('click', () => {
-    listadoProyectos.innerHTML = '';
+    listadoProyectos.innerHTML = '<option id="all" selected value="all">Ver todas</option>';
     proyectos.forEach(proyecto => {
       const option = document.createElement('option');
-      option.setAttribute('id', 'pOption');
+      option.setAttribute('id', `${proyecto.id}`);
       option.value = proyecto.id;
       option.innerHTML = proyecto.name;
       listadoProyectos.appendChild(option);
       });
   })
+//Filtrar tareas por proyectos
+const filtrar = () => {
+  let filtroProyecto = listadoProyectos.value;
+  let proyectosFiltrados = [];
+  if (filtroProyecto == 'all') {
+    proyectosFiltrados = proyectos
+  } else {
+    proyectosFiltrados = proyectos.filter(el => el.id == listadoProyectos.value)
+  }
+mostrarProyectosYTareas(proyectosFiltrados);
+}
+listadoProyectos.addEventListener('change', () => {
+  filtrar();
+});
+
 // Activar caracteristicas del modo oscuro
 const body = document.getElementById('body');
 const footer = document.getElementById('footer');
@@ -223,3 +244,15 @@ const btnToggle = toggle.addEventListener('click', () => {
     section.classList.toggle('bg-secondary');
   }
 })
+
+$(function(){
+  $("#fecha").datepicker({
+      minDate: '1d',
+      maxDate: '90d',
+      beforeShowDay: $.datepicker.noWeekends,
+      dateFormat: "dd-mm-yy",
+      dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+      monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      firstDay: 1,
+      });
+});
