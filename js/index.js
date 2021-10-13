@@ -11,22 +11,22 @@ let proyectos = [
       "date": "2021-10-31",
       "tasks": [
           {
-              "id": "1308",
+              "id": "5",
               "name": "Definir HTML",
               "priority": "Alta"
           },
           {
-              "id": "1308",
+              "id": "6",
               "name": "Definir CSS",
               "priority": "Media"
           },
           {
-              "id": "1308",
+              "id": "7",
               "name": "Definir JS",
               "priority": "Baja"
           },
           {
-              "id": "1308",
+              "id": "8",
               "name": "Responsive",
               "priority": "Media"
           }
@@ -38,27 +38,27 @@ let proyectos = [
     "date": "2021-11-01",
     "tasks": [
         {
-            "id": "4581",
+            "id": "1",
             "name": "Definir HTML",
             "priority": "Alta"
         },
         {
-            "id": "4581",
+            "id": "2",
             "name": "Definir CSS",
             "priority": "Media"
         },
         {
-            "id": "4581",
+            "id": "3",
             "name": "Definir JS",
             "priority": "Baja"
         },
         {
-            "id": "4581",
+            "id": "4",
             "name": "Desarrollar galería",
             "priority": "Media"
         }
     ]
-}
+  }
 ];
 const priorityColor = () => {
   // Colorear prioridades
@@ -87,30 +87,44 @@ const taskDone = () => {
     })
   }
 }
+
 const tableProjects = document.getElementById('tableProjects')
 const tableTasks = document.getElementById('tableTasks')
 const mostrarProyectosYTareas = (array) => {
   tableProjects.innerHTML = '';
   tableTasks.innerHTML = '';
   array.forEach(proyecto => {
+    let id = proyecto.id;
+    let project = proyecto.name;
+    let date = proyecto.date;
     const tr = document.createElement('tr');
     tr.innerHTML = `<tr>
-                      <td class="text-center p-0" scope="row">${proyecto.id}</th>
-                      <td class="text-center p-0" title=${proyecto.name}">${proyecto.name}</td>
-                      <td class="text-center p-0">${proyecto.date}</td>
-                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1"></button></td>
+                      <td class="text-center p-0" scope="row">${id}</th>
+                      <td class="text-center p-0" title=${project}">${project}</td>
+                      <td class="text-center p-0">${date}</td>
+                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1" id="eliminar${id}" value="${id}"></button></td>
                     </tr>`;
+    tr.setAttribute('id', `${id}`)
     tableProjects.appendChild(tr);
-
-    proyecto['tasks'].forEach(task => {
+      $(`#eliminar${id}`).on('click', ()=>{
+        tr.remove();
+      })
+    proyecto['tasks'].forEach(tasks => {
+    let id = tasks.id;
+    let task = tasks.name;
+    let priority = tasks.priority;
     const tr = document.createElement('tr');
     tr.innerHTML = `<tr>
-                      <td class="text-center p-0" scope="row">${proyecto.id}</th>
-                      <td class="text-center p-0" title="${task.name}">${task.name}</td>
-                      <td class="text-center p-0" value="${task.priority}"><span class="badge rounded-pill text-center">${task.priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1"></button></td>
+                      <td class="text-center p-0" scope="row">${id}</th>
+                      <td class="text-center p-0" title="${task}">${task}</td>
+                      <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
+                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1" id="eliminar${id}" value="${id}"></button></td>
                     </tr>`;
+    tr.setAttribute('id', `${id}`)
     tableTasks.appendChild(tr);
+    $(`#eliminar${id}`).on('click', ()=>{
+      tr.remove();
+    })
   });
   priorityColor();
   });
@@ -139,9 +153,13 @@ const agregarProyecto = () => {
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title="${project}">${project}</td>
                       <td class="text-center p-0">${date}</td>
-                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger"></button></td>
+                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger" id="eliminar${id}" value="${id}" ></button></td>
                     </tr>`;
+    tr.setAttribute('id', `${id}`)
     tableProjects.appendChild(tr);
+    $(`#eliminar${id}`).on('click', ()=>{
+      tr.remove();
+    })
     let proyecto = new Project(id, project, date);
     proyectos.push(proyecto);
   }
@@ -166,6 +184,7 @@ class Task {
 const agregarTarea = () => {
   const inputTask = document.getElementById('tarea');
   const selectPriority= document.getElementById('prioridad');
+  id = Date.now().toString().slice(10, 14);
   let task = inputTask.value;
   let priority = selectPriority.value;
   const proyecto = document.getElementById('projects')
@@ -175,15 +194,18 @@ const agregarTarea = () => {
     const tableTasks = document.getElementById('tableTasks')
     const tr = document.createElement('tr');
     tr.innerHTML = `<tr>
-                      <td class="text-center p-0" scope="row">${projectId}</th>
+                      <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title="${task}">${task}</td>
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1"></button></td>
+                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1" value="${id}" id="eliminar${id}"></button></td>
                     </tr>`;
+    tr.setAttribute('id', `${id}`)
     tableTasks.appendChild(tr);
+    $(`#eliminar${id}`).on('click', ()=>{
+      tr.remove();
+    })
     let tarea = new Task(id, task, priority);
     proyectos[projectIndex].tasks.push(tarea)  
-    console.log(projectId);
   }
   formTasks.reset();
   priorityColor();
@@ -193,6 +215,7 @@ btnT.addEventListener('click', agregarTarea)
 formTasks.addEventListener('submit', (e)=>{
   e.preventDefault();
 })
+
 // Iterar listado de proyectos agregados para seleccionarlo al momento de agregarle tareas
   const listadoProyectos = document.getElementById('projects')
   btnP.addEventListener('click', () => {
@@ -219,6 +242,8 @@ mostrarProyectosYTareas(proyectosFiltrados);
 listadoProyectos.addEventListener('change', () => {
   filtrar();
 });
+
+
 
 // Activar caracteristicas del modo oscuro
 const body = document.getElementById('body');
