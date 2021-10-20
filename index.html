@@ -18,10 +18,12 @@
     crossorigin="anonymous"></script>
   <script defer src="https://kit.fontawesome.com/a979aec070.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script defer src="js/jquery-3.6.0.min.js"></script>
+  <script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script defer src="js/particles.min.js"></script>
 	<script defer src="js/particulas.js"></script>
   <script defer src="js/index.js"></script>
+  <script defer src="js/desafiosJQuery.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="styles/css/style.css">
   <title>AdminTask - Administrador de tareas</title>
@@ -54,8 +56,8 @@
     </nav>
   </header>
   <main class="main container-fluid animate__animated animate__slideInLeft">
-    <section class="section container-fluid bg-light shadow-lg">
-      <h2>Listado de proyectos</h2>
+    <section class="section container-fluid bg-light shadow-lg" id="sectionProjects">
+      <h2>Listado de proyectos <i class="fas fa-arrows-alt-v" id="arrowProjects"></i></h2>
       <button type="button" class="anadir btn btn-dark m-3" title="Añadir proyecto" data-bs-toggle="modal" data-bs-target="#modalProyecto">+</button>
       <div class="table-responsive">
       <table class="table table-secondary table-striped table-hover">
@@ -72,8 +74,8 @@
       </table>
     </div>
     </section>
-    <section class="section container-fluid bg-light shadow-lg">
-      <h2>Listado de tareas</h2>
+    <section class="section container-fluid bg-light shadow-lg" id="sectionTasks">
+      <h2>Listado de tareas <i class="fas fa-arrows-alt-v" id="arrowTasks"></i></h2>
       <button type="button" class="anadir btn btn-dark mb-3" title="Añadir tarea" data-bs-toggle="modal" data-bs-target="#modalTarea" id="openModalTask">+</button>
       <select class="form-select" aria-label="Default select example" id="projects">
         <option id="all" selected value="all" disabled>Ver todas</option>
@@ -92,6 +94,15 @@
         </tbody>
       </table>
     </div>
+    </section>
+    <section class="section container-fluid bg-light shadow-lg" id="random">
+      <h2>Si tienes dudas de una palabra en inglés.</h2>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control rounded-3" placeholder="Ingresa una palabra" id="wordInput" aria-label="Ingresa una palabra" aria-describedby="search">
+        <button class="btn btn-dark rounded-3" type="button" id="search">Buscar</button>
+      </div>
+      <div class="card text-dark bg-light m-3" id="word">
+      </div>
     </section>
   </main>
   <!-- Modal Tarea -->
@@ -159,7 +170,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="#" method="post">
+          <form id="formProfile">
             <div class="form-floating">
               <input type="name" class="form-control" id="name" placeholder="Nombre" autocomplete="off">
               <label for="name">Nombre</label>
@@ -179,9 +190,9 @@
             </div>
           </form>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer d-flex flex-row justify-content-center">
           <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn actualizar">Guardar cambios</button>
+          <button type="button" class="btn actualizar" id="updateProfile">Guardar cambios</button>
         </div>
       </div>
     </div>

@@ -58,6 +58,33 @@ let proyectos = [
             "priority": "Media"
         }
     ]
+  },
+  {
+    "id": "2419",
+    "name": "Hope PetShop",
+    "date": "2021-10-31",
+    "tasks": [
+        {
+            "id": "12",
+            "name": "Definir HTML",
+            "priority": "Alta"
+        },
+        {
+            "id": "56",
+            "name": "Definir CSS",
+            "priority": "Media"
+        },
+        {
+            "id": "83",
+            "name": "Definir JS",
+            "priority": "Baja"
+        },
+        {
+            "id": "54",
+            "name": "Agregar productos",
+            "priority": "Media"
+        }
+    ]
   }
 ];
 const priorityColor = () => {
@@ -87,10 +114,27 @@ const taskDone = () => {
     })
   }
 }
+const eliminarProject = ()=> {
+  const btnEliminar = document.getElementsByClassName('fa-trash-alt');
+  const trs = document.getElementsByTagName('tr');
+  for (const btn of btnEliminar) {
+    btn.addEventListener('click', ()=>{
+      const btnId = btn.value;
+      const projectIndex = proyectos.findIndex(proyecto => proyecto.id == btnId);
+      proyectos.splice(projectIndex, 1)
+    })
+    for (const tr of trs) {
+      tr.addEventListener('click', ()=>{
+        tr.remove();
+      })
+    }
+  }
 
-const tableProjects = document.getElementById('tableProjects')
-const tableTasks = document.getElementById('tableTasks')
+}
+
 const mostrarProyectosYTareas = (array) => {
+  const tableProjects = document.getElementById('tableProjects')
+  const tableTasks = document.getElementById('tableTasks')
   tableProjects.innerHTML = '';
   tableTasks.innerHTML = '';
   array.forEach(proyecto => {
@@ -102,13 +146,11 @@ const mostrarProyectosYTareas = (array) => {
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title=${project}">${project}</td>
                       <td class="text-center p-0">${date}</td>
-                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1" id="eliminar${id}" value="${id}"></button></td>
+                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1" onclick="eliminarProject()" id="eliminar" value="${id}"></button></td>
                     </tr>`;
-    tr.setAttribute('id', `${id}`)
     tableProjects.appendChild(tr);
-      $(`#eliminar${id}`).on('click', ()=>{
-        tr.remove();
-      })
+    tr.setAttribute('value', `${id}`)
+
     proyecto['tasks'].forEach(tasks => {
     let id = tasks.id;
     let task = tasks.name;
@@ -118,14 +160,14 @@ const mostrarProyectosYTareas = (array) => {
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title="${task}">${task}</td>
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1" id="eliminar${id}" value="${id}"></button></td>
+                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1" id="eliminar" value="${id}"></button></td>
                     </tr>`;
-    tr.setAttribute('id', `${id}`)
     tableTasks.appendChild(tr);
-    $(`#eliminar${id}`).on('click', ()=>{
-      tr.remove();
-    })
+    tr.setAttribute('value', `${id}`)
+
+
   });
+
   priorityColor();
   });
 }
@@ -153,15 +195,14 @@ const agregarProyecto = () => {
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title="${project}">${project}</td>
                       <td class="text-center p-0">${date}</td>
-                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger" id="eliminar${id}" value="${id}" ></button></td>
+                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger" onclick="eliminarProject()" id="eliminar" value="${id}" ></button></td>
                     </tr>`;
     tr.setAttribute('id', `${id}`)
     tableProjects.appendChild(tr);
-    $(`#eliminar${id}`).on('click', ()=>{
-      tr.remove();
-    })
     let proyecto = new Project(id, project, date);
     proyectos.push(proyecto);
+    console.log(proyectos);
+
   }
   formProjects.reset();
 }
@@ -170,7 +211,18 @@ btnP.addEventListener('click', agregarProyecto);
 formProjects.addEventListener('submit', (e)=>{
   e.preventDefault()
 })
-
+// Iterar listado de proyectos agregados para seleccionarlo al momento de agregarle tareas
+const listadoProyectos = document.getElementById('projects')
+btnP.addEventListener('click', () => {
+  listadoProyectos.innerHTML = '<option id="all" selected value="all">Ver todas</option>';
+  proyectos.forEach(proyecto => {
+    const option = document.createElement('option');
+    option.setAttribute('id', `${proyecto.id}`);
+    option.value = proyecto.id;
+    option.innerHTML = proyecto.name;
+    listadoProyectos.appendChild(option);
+    });
+})
 
 // Tareas
 class Task {
@@ -197,13 +249,10 @@ const agregarTarea = () => {
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title="${task}">${task}</td>
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1" value="${id}" id="eliminar${id}"></button></td>
+                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1" value="${id}" id="eliminar"></button></td>
                     </tr>`;
     tr.setAttribute('id', `${id}`)
     tableTasks.appendChild(tr);
-    $(`#eliminar${id}`).on('click', ()=>{
-      tr.remove();
-    })
     let tarea = new Task(id, task, priority);
     proyectos[projectIndex].tasks.push(tarea)  
   }
@@ -215,19 +264,6 @@ btnT.addEventListener('click', agregarTarea)
 formTasks.addEventListener('submit', (e)=>{
   e.preventDefault();
 })
-
-// Iterar listado de proyectos agregados para seleccionarlo al momento de agregarle tareas
-  const listadoProyectos = document.getElementById('projects')
-  btnP.addEventListener('click', () => {
-    listadoProyectos.innerHTML = '<option id="all" selected value="all">Ver todas</option>';
-    proyectos.forEach(proyecto => {
-      const option = document.createElement('option');
-      option.setAttribute('id', `${proyecto.id}`);
-      option.value = proyecto.id;
-      option.innerHTML = proyecto.name;
-      listadoProyectos.appendChild(option);
-      });
-  })
 //Filtrar tareas por proyectos
 const filtrar = () => {
   let filtroProyecto = listadoProyectos.value;
@@ -245,15 +281,17 @@ listadoProyectos.addEventListener('change', () => {
 
 
 
+
 // Activar caracteristicas del modo oscuro
-const body = document.getElementById('body');
-const footer = document.getElementById('footer');
-const header = document.getElementById('header');
 const toggle = document.getElementById('toggle');
-const tables = document.getElementsByTagName('table');
-const sections = document.getElementsByTagName('section');
-const btnPerfil = document.getElementById('btnPerfil');
+
 const btnToggle = toggle.addEventListener('click', () => {
+  const body = document.getElementById('body');
+  const footer = document.getElementById('footer');
+  const header = document.getElementById('header');
+  const tables = document.getElementsByTagName('table');
+  const sections = document.getElementsByTagName('section');
+  const btnPerfil = document.getElementById('btnPerfil');
   body.classList.toggle('bg-secondary');
   body.classList.toggle('bg-dark');
   footer.classList.toggle('bg-light');
