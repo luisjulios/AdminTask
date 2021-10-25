@@ -116,6 +116,7 @@ html {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   padding-bottom: 5rem;
+  overflow-x: hidden;
 }
 
 canvas {
@@ -253,7 +254,7 @@ button.anadir:hover {
 }
 
 .footer {
-  width: 100vw;
+  width: 100%;
   height: 4rem;
   display: flex;
   flex-direction: row;
