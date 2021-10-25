@@ -11,82 +11,121 @@ let proyectos = [
     "date": "2021-10-31",
     "tasks": [
         {
-            "id": "5",
+            "id": "1",
             "name": "Definir HTML",
             "priority": "Alta",
             "state": "false"
         },
         {
-            "id": "6",
+            "id": "2",
             "name": "Definir CSS",
             "priority": "Media",
-            "state": "false"
+            "state": "true"
         },
         {
-            "id": "7",
+            "id": "3",
             "name": "Definir JS",
             "priority": "Baja",
             "state": "false"
         },
         {
-            "id": "8",
+            "id": "4",
             "name": "Responsive",
             "priority": "Media",
-            "state": "false"
+            "state": "true"
         }
     ]
 },
 {
-  "id": "4581",
+  "id": "2419",
   "name": "AdminTask",
-  "date": "2021-11-01",
+  "date": "2021-10-31",
   "tasks": [
       {
-          "id": "1",
+          "id": "5",
           "name": "Definir HTML",
-          "priority": "Alta"
+          "priority": "Alta",
+          "state": "false"
       },
       {
-          "id": "2",
+          "id": "6",
           "name": "Definir CSS",
-          "priority": "Media"
+          "priority": "Media",
+          "state": "true"
       },
       {
-          "id": "3",
+          "id": "7",
           "name": "Definir JS",
-          "priority": "Baja"
+          "priority": "Baja",
+          "state": "false"
       },
       {
-          "id": "4",
-          "name": "Desarrollar galería",
-          "priority": "Media"
+          "id": "8",
+          "name": "Responsive",
+          "priority": "Media",
+          "state": "true"
       }
   ]
 },
 {
-  "id": "2419",
-  "name": "Hope PetShop",
+  "id": "9142",
+  "name": "HopeShop.cl",
   "date": "2021-10-31",
   "tasks": [
       {
-          "id": "12",
+          "id": "9",
           "name": "Definir HTML",
-          "priority": "Alta"
+          "priority": "Alta",
+          "state": "false"
       },
       {
-          "id": "56",
+          "id": "10",
           "name": "Definir CSS",
-          "priority": "Media"
+          "priority": "Media",
+          "state": "true"
       },
       {
-          "id": "83",
+          "id": "11",
           "name": "Definir JS",
-          "priority": "Baja"
+          "priority": "Baja",
+          "state": "false"
       },
       {
-          "id": "54",
-          "name": "Agregar productos",
-          "priority": "Media"
+          "id": "12",
+          "name": "Responsive",
+          "priority": "Media",
+          "state": "true"
+      }
+  ]
+},
+{
+  "id": "7434",
+  "name": "Portafolio",
+  "date": "2021-10-31",
+  "tasks": [
+      {
+          "id": "13",
+          "name": "Definir HTML",
+          "priority": "Alta",
+          "state": "false"
+      },
+      {
+          "id": "14",
+          "name": "Definir CSS",
+          "priority": "Media",
+          "state": "true"
+      },
+      {
+          "id": "15",
+          "name": "Definir JS",
+          "priority": "Baja",
+          "state": "false"
+      },
+      {
+          "id": "16",
+          "name": "Responsive",
+          "priority": "Media",
+          "state": "true"
       }
   ]
 }
@@ -119,6 +158,10 @@ const taskDone = () => {
       }
     })
   }
+  // const idProject = btn.getAttribute('data-project');
+  // const projectIndex = proyectos.findIndex(proyecto => proyecto.id == idProject);
+  // const taskIndex = proyectos[projectIndex].tasks.findIndex(task => task.id == idTask);
+  // proyectos[projectIndex].tasks.splice(taskIndex, 1);
 }
 
 // Eliminar proyectos/tareas
@@ -134,6 +177,7 @@ const eliminarProject = (projecId)=> {
           background: "linear-gradient(to right, #6c757d, #212529)",
         }
       }).showToast();
+      filtrar();
 }
 
 const eliminarTask = (idTask)=> {
@@ -176,7 +220,7 @@ const mostrarProyectosYTareas = (array) => {
     tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</th>
                       <td class="text-center p-0" title="${task}">${task}</td>
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1"  value="${state}"></button><button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button></td>`;
+                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1"  value="${state}" id="done-${idTask}"></button><button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button></td>`;
     tableTasks.appendChild(tr);
   });
   priorityColor();
