@@ -1,91 +1,91 @@
 const nombre = localStorage.getItem('name');
-const user = localStorage.getItem('user');
+const email = localStorage.getItem('email');
 const nameUser = document.getElementById('btnPerfil');
 nameUser.innerText =`Hola! Bienvenido, ${nombre}.`;
 //Declarar estructura JSON para definir datos iniciales para consumir por el simular
 
 let proyectos = [
-  {
-      "id": "1308",
-      "name": "Mangonails.cl",
-      "date": "2021-10-31",
-      "tasks": [
-          {
-              "id": "5",
-              "name": "Definir HTML",
-              "priority": "Alta"
-          },
-          {
-              "id": "6",
-              "name": "Definir CSS",
-              "priority": "Media"
-          },
-          {
-              "id": "7",
-              "name": "Definir JS",
-              "priority": "Baja"
-          },
-          {
-              "id": "8",
-              "name": "Responsive",
-              "priority": "Media"
-          }
-      ]
-  },
-  {
-    "id": "4581",
-    "name": "AdminTask",
-    "date": "2021-11-01",
-    "tasks": [
-        {
-            "id": "1",
-            "name": "Definir HTML",
-            "priority": "Alta"
-        },
-        {
-            "id": "2",
-            "name": "Definir CSS",
-            "priority": "Media"
-        },
-        {
-            "id": "3",
-            "name": "Definir JS",
-            "priority": "Baja"
-        },
-        {
-            "id": "4",
-            "name": "Desarrollar galería",
-            "priority": "Media"
-        }
-    ]
-  },
-  {
-    "id": "2419",
-    "name": "Hope PetShop",
+{
+    "id": "1308",
+    "name": "Mangonails.cl",
     "date": "2021-10-31",
     "tasks": [
         {
-            "id": "12",
+            "id": "5",
             "name": "Definir HTML",
             "priority": "Alta"
         },
         {
-            "id": "56",
+            "id": "6",
             "name": "Definir CSS",
             "priority": "Media"
         },
         {
-            "id": "83",
+            "id": "7",
             "name": "Definir JS",
             "priority": "Baja"
         },
         {
-            "id": "54",
-            "name": "Agregar productos",
+            "id": "8",
+            "name": "Responsive",
             "priority": "Media"
         }
     ]
-  }
+},
+{
+  "id": "4581",
+  "name": "AdminTask",
+  "date": "2021-11-01",
+  "tasks": [
+      {
+          "id": "1",
+          "name": "Definir HTML",
+          "priority": "Alta"
+      },
+      {
+          "id": "2",
+          "name": "Definir CSS",
+          "priority": "Media"
+      },
+      {
+          "id": "3",
+          "name": "Definir JS",
+          "priority": "Baja"
+      },
+      {
+          "id": "4",
+          "name": "Desarrollar galería",
+          "priority": "Media"
+      }
+  ]
+},
+{
+  "id": "2419",
+  "name": "Hope PetShop",
+  "date": "2021-10-31",
+  "tasks": [
+      {
+          "id": "12",
+          "name": "Definir HTML",
+          "priority": "Alta"
+      },
+      {
+          "id": "56",
+          "name": "Definir CSS",
+          "priority": "Media"
+      },
+      {
+          "id": "83",
+          "name": "Definir JS",
+          "priority": "Baja"
+      },
+      {
+          "id": "54",
+          "name": "Agregar productos",
+          "priority": "Media"
+      }
+  ]
+}
 ];
 const priorityColor = () => {
   // Colorear prioridades
@@ -115,23 +115,30 @@ const taskDone = () => {
   }
 }
 const eliminarProject = ()=> {
-  const btnEliminar = document.getElementsByClassName('fa-trash-alt');
-  const trs = document.getElementsByTagName('tr');
+  const btnEliminar = document.getElementsByClassName('deleteProject');
   for (const btn of btnEliminar) {
-    btn.addEventListener('click', ()=>{
+    btn.addEventListener('click', (e)=>{
       const btnId = btn.value;
       const projectIndex = proyectos.findIndex(proyecto => proyecto.id == btnId);
       proyectos.splice(projectIndex, 1)
+      e.target.parentElement.parentElement.remove();
+      Toastify({
+        text: "Proyecto eliminado",
+        className: "info",
+        style: {
+          background: "linear-gradient(to right, #6c757d, #212529)",
+        }
+      }).showToast();
     })
-    for (const tr of trs) {
-      tr.addEventListener('click', ()=>{
-        tr.remove();
-      })
-    }
-  }
-
-}
-
+  }}
+  // const deleteTask = ()=> {
+  //   const btnEliminar = document.getElementsByClassName('deleteTask');
+  //   for (const btn of btnEliminar) {
+  //     btn.addEventListener('click', (e)=>{
+  //       const btnId = btn.value;
+  //     })
+  //   }
+  // }
 const mostrarProyectosYTareas = (array) => {
   const tableProjects = document.getElementById('tableProjects')
   const tableTasks = document.getElementById('tableTasks')
@@ -146,11 +153,9 @@ const mostrarProyectosYTareas = (array) => {
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title=${project}">${project}</td>
                       <td class="text-center p-0">${date}</td>
-                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1" onclick="eliminarProject()" id="eliminar" value="${id}"></button></td>
+                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1 deleteProject" onclick="eliminarProject()"  id="eliminar" value="${id}"></button></td>
                     </tr>`;
     tableProjects.appendChild(tr);
-    tr.setAttribute('value', `${id}`)
-
     proyecto['tasks'].forEach(tasks => {
     let id = tasks.id;
     let task = tasks.name;
@@ -160,16 +165,12 @@ const mostrarProyectosYTareas = (array) => {
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title="${task}">${task}</td>
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1" id="eliminar" value="${id}"></button></td>
+                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1 deleteTask" onClick="deleteTask()" id="eliminar" value="${id}"></button></td>
                     </tr>`;
     tableTasks.appendChild(tr);
-    tr.setAttribute('value', `${id}`)
-
-
   });
-
   priorityColor();
-  });
+  })
 }
 mostrarProyectosYTareas(proyectos);
 
@@ -195,14 +196,19 @@ const agregarProyecto = () => {
                       <td class="text-center p-0" scope="row">${id}</th>
                       <td class="text-center p-0" title="${project}">${project}</td>
                       <td class="text-center p-0">${date}</td>
-                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger" onclick="eliminarProject()" id="eliminar" value="${id}" ></button></td>
+                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger deleteProject" onclick="eliminarProject()" id="eliminar" value="${id}" ></button></td>
                     </tr>`;
     tr.setAttribute('id', `${id}`)
     tableProjects.appendChild(tr);
     let proyecto = new Project(id, project, date);
     proyectos.push(proyecto);
-    console.log(proyectos);
-
+    Toastify({
+      text: "Proyecto agregado",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #6c757d, #212529)",
+      }
+    }).showToast();
   }
   formProjects.reset();
 }
@@ -226,19 +232,21 @@ btnP.addEventListener('click', () => {
 
 // Tareas
 class Task {
-  constructor(id, name, priority) {
+  constructor(id, name, priority, state) {
     this.id = id;
     this.name = name;
     this.priority = priority;
+    this.state = state;
   }
 }
 
 const agregarTarea = () => {
   const inputTask = document.getElementById('tarea');
   const selectPriority= document.getElementById('prioridad');
-  id = Date.now().toString().slice(10, 14);
+  const id = Date.now().toString().slice(10, 14);
   let task = inputTask.value;
   let priority = selectPriority.value;
+  let state = false;
   const proyecto = document.getElementById('projects')
   const projectId = proyecto.value;
   const projectIndex = proyectos.findIndex(proyecto => proyecto.id == projectId)
@@ -251,10 +259,17 @@ const agregarTarea = () => {
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
                       <td class="text-center p-0"><button class="btn far fa-check-circle p-1" onClick="taskDone()"></button><button class="btn fas fa-trash-alt text-danger p-1" value="${id}" id="eliminar"></button></td>
                     </tr>`;
-    tr.setAttribute('id', `${id}`)
     tableTasks.appendChild(tr);
-    let tarea = new Task(id, task, priority);
-    proyectos[projectIndex].tasks.push(tarea)  
+    let tarea = new Task(id, task, priority, state);
+    proyectos[projectIndex].tasks.push(tarea);
+    console.log(proyectos[0].tasks);
+    Toastify({
+      text: "Tarea agregada",
+      className: "info",
+      style: {
+        background: "linear-gradient(to right, #6c757d, #212529)",
+      }
+    }).showToast();
   }
   formTasks.reset();
   priorityColor();

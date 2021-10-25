@@ -20,11 +20,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
   <script defer src="js/jquery-3.6.0.min.js"></script>
   <script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script defer src="js/particles.min.js"></script>
-	<script defer src="js/particulas.js"></script>
+  <script defer src="js/particulas.js"></script>
   <script defer src="js/index.js"></script>
+  <script defer src="js/updateProfile.js"></script>
   <script defer src="js/desafiosJQuery.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="styles/css/toastify.css">
   <link rel="stylesheet" href="styles/css/style.css">
   <title>AdminTask - Administrador de tareas</title>
 </head>
@@ -47,9 +50,11 @@
     <nav class="navbar navbar">
       <div class="container-fluid">
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="btnPerfil" data-bs-toggle="dropdown" aria-expanded="false"></button>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="btnPerfil" data-bs-toggle="dropdown"
+            aria-expanded="false"></button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#miPerfil">Mi perfil</a></li>
+            <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#miPerfil">Mi perfil</a>
+            </li>
             <li><a class="dropdown-item" type="button" href="login.html">Cerrar sesión</a></li>
           </ul>
         </div>
@@ -57,45 +62,47 @@
   </header>
   <main class="main container-fluid animate__animated animate__slideInLeft">
     <section class="section container-fluid bg-light shadow-lg" id="sectionProjects">
-      <h2>Listado de proyectos <i class="fas fa-arrows-alt-v" id="arrowProjects"></i></h2>
-      <button type="button" class="anadir btn btn-dark m-3" title="Añadir proyecto" data-bs-toggle="modal" data-bs-target="#modalProyecto">+</button>
+      <h2>Listado de proyectos</h2>
+      <button type="button" class="anadir btn btn-dark m-3" title="Añadir proyecto" data-bs-toggle="modal"
+        data-bs-target="#modalProyecto">+</button>
       <div class="table-responsive">
-      <table class="table table-secondary table-striped table-hover">
-        <thead>
-          <tr>
-            <th class="text-center" scope="col">#ID</th>
-            <th class="text-center" scope="col">Proyecto</th>
-            <th class="text-center" scope="col">Fecha de entrega</th>
-            <th class="text-center" scope="col">Eliminar</th>
-          </tr>
-        </thead>
-        <tbody id="tableProjects">
-        </tbody>
-      </table>
-    </div>
+        <table class="table table-secondary table-striped table-hover">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">#ID</th>
+              <th class="text-center" scope="col">Proyecto</th>
+              <th class="text-center" scope="col">Fecha de entrega</th>
+              <th class="text-center" scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody id="tableProjects">
+          </tbody>
+        </table>
+      </div>
     </section>
     <section class="section container-fluid bg-light shadow-lg" id="sectionTasks">
-      <h2>Listado de tareas <i class="fas fa-arrows-alt-v" id="arrowTasks"></i></h2>
-      <button type="button" class="anadir btn btn-dark mb-3" title="Añadir tarea" data-bs-toggle="modal" data-bs-target="#modalTarea" id="openModalTask">+</button>
+      <h2>Listado de tareas</h2>
+      <button type="button" class="anadir btn btn-dark mb-3" title="Añadir tarea" data-bs-toggle="modal"
+        data-bs-target="#modalTarea" id="openModalTask">+</button>
       <select class="form-select" aria-label="Default select example" id="projects">
         <option id="all" selected value="all" disabled>Ver todas</option>
       </select>
       <div class="table-responsive">
-      <table class="table table-secondary table-striped table-hover">
-        <thead>
-          <tr>
-            <th class="text-center" scope="col">#ID</th>
-            <th class="text-center" scope="col">Tarea</th>
-            <th class="text-center" scope="col">Prioridad</th>
-            <th class="text-center" scope="col">Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tableTasks">
-        </tbody>
-      </table>
-    </div>
+        <table class="table table-secondary table-striped table-hover">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">#ID</th>
+              <th class="text-center" scope="col">Tarea</th>
+              <th class="text-center" scope="col">Prioridad</th>
+              <th class="text-center" scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tableTasks">
+          </tbody>
+        </table>
+      </div>
     </section>
-    <section class="section container-fluid bg-light shadow-lg" id="random">
+    <!-- <section class="section container-fluid bg-light shadow-lg" id="random">
       <h2>Si tienes dudas de una palabra en inglés.</h2>
       <div class="input-group mb-3">
         <input type="text" class="form-control rounded-3" placeholder="Ingresa una palabra" id="wordInput" aria-label="Ingresa una palabra" aria-describedby="search">
@@ -103,39 +110,41 @@
       </div>
       <div class="card text-dark bg-light m-3" id="word">
       </div>
-    </section>
+    </section> -->
   </main>
   <!-- Modal Tarea -->
-<div class="modal fade" id="modalTarea" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalTareaLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalTareaLabel">Añadir tarea al proyecto</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="formTasks">
-          <div class="form-floating">
-            <input type="tarea" class="form-control" id="tarea" autocomplete="off" required maxlength="20">
-            <label for="tarea">Nombre de la tarea</label>
-          </div>
-          <select class="form-select" aria-label="Default select example" id="prioridad" required>
-            <option selected disabled>Seleccione una prioridad</option>
-            <option value="Alta">Alta</option>
-            <option value="Media">Media</option>
-            <option value="Baja">Baja</option>
-          </select>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary" id="btnT">Guardar</button>
+  <div class="modal fade" id="modalTarea" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalTareaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTareaLabel">Añadir tarea al proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formTasks">
+            <div class="form-floating">
+              <input type="tarea" class="form-control" id="tarea" autocomplete="off" required maxlength="20">
+              <label for="tarea">Nombre de la tarea</label>
+            </div>
+            <select class="form-select" aria-label="Default select example" id="prioridad" required>
+              <option selected disabled>Seleccione una prioridad</option>
+              <option value="Alta">Alta</option>
+              <option value="Media">Media</option>
+              <option value="Baja">Baja</option>
+            </select>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary" id="btnT">Guardar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
   <!-- Modal Proyecto -->
-  <div class="modal fade" id="modalProyecto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalProyectoLabel" aria-hidden="true">
+  <div class="modal fade" id="modalProyecto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalProyectoLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -161,7 +170,7 @@
       </div>
     </div>
   </div>
-<!-- Modal Perfil -->
+  <!-- Modal Perfil -->
   <div class="modal fade" id="miPerfil" tabindex="-1" aria-labelledby="miPerfilLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -176,22 +185,16 @@
               <label for="name">Nombre</label>
             </div>
             <div class="form-floating">
-              <input type="user" class="form-control" id="user" placeholder="user" autocomplete="off">
-              <label for="user">User</label>
+              <input type="email" class="form-control" id="email" placeholder="email" autocomplete="off">
+              <label for="email">Email</label>
             </div>
             <div class="form-floating">
               <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
               <label for="password">Ingresa tu nueva contraseña</label>
             </div>
-            <div class="form-floating">
-              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmación"
-                autocomplete="off">
-              <label for="password">Confirma tu nueva contraseña</label>
-            </div>
           </form>
         </div>
         <div class="modal-footer d-flex flex-row justify-content-center">
-          <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cerrar</button>
           <button type="button" class="btn actualizar" id="updateProfile">Guardar cambios</button>
         </div>
       </div>

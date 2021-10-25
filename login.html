@@ -13,16 +13,19 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="styles/css/toastify.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
   <script defer src="https://kit.fontawesome.com/a979aec070.js" crossorigin="anonymous"></script>
   <script defer src="js/particles.min.js"></script>
-	<script defer src="js/particulas.js"></script>
+  <script defer src="js/particulas.js"></script>
   <script defer src="js/login.js"></script>
   <link rel="stylesheet" href="styles/css/style.css">
   <title>AdminTask - Login</title>
 </head>
+
 <body class="body bg-secondary" id="body">
   <header class="header container-fluid animate__animated animate__fadeIn bg-light shadow-lg">
     <div class="content">
@@ -43,8 +46,8 @@
     <h2 class="text-center p-3">Iniciar sesión</h2>
     <form id="formLogin">
       <div class="form-floating">
-        <input type="text" class="form-control" id="user" placeholder="ejemplo@correo.com" autocomplete="off">
-        <label for="user">User</label>
+        <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" autocomplete="off">
+        <label for="email">Email</label>
       </div>
       <div class="form-floating">
         <input type="password" class="form-control" id="password" placeholder="Password"
@@ -62,4 +65,5 @@
     <p></p>
   </footer>
 </body>
+
 </html>
