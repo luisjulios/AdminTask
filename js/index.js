@@ -128,6 +128,7 @@ const taskDone = (idTask) => {
     check.value = "false"
     check.classList.remove('bg-success');
   }
+  return idProject;
 }
 const mostrarProyectosYTareas = (array) => {
   const tableProjects = document.getElementById('tableProjects')
@@ -140,9 +141,9 @@ const mostrarProyectosYTareas = (array) => {
     let date = proyecto.date;
     const tr = document.createElement('tr');
     tr.innerHTML = `<td class="text-center p-0" scope="row">${idProject}</td>
-<td class="text-center p-0" title=${project}">${project}</td>
-<td class="text-center p-0">${date}</td>
-<td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1 eliminarProject" onclick="eliminarProject(${idProject})" id="eliminar-${idProject}" value="${idProject}"></button></td>`;
+                    <td class="text-center p-0" title=${project}">${project}</td>
+                    <td class="text-center p-0">${date}</td>
+                    <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1" onclick="eliminarProject(${idProject})" id="eliminar-${idProject}" value="${idProject}"></button></td>`;
     tableProjects.appendChild(tr);
     proyecto['tasks'].forEach(tasks => {
       let idTask = tasks.id;
@@ -151,9 +152,12 @@ const mostrarProyectosYTareas = (array) => {
       let state = false;
       const tr = document.createElement('tr');
       tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</td>
-<td class="text-center p-0" title="${task}">${task}</td>
-<td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-<td class="text-center p-0"><button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button><button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button></td>`;
+                      <td class="text-center p-0" title="${task}">${task}</td>
+                      <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
+                      <td class="text-center p-0">
+                      <button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button>
+                      <button class="btn fas fa-trash-alt text-danger p-1" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button>
+                      </td>`;
       tableTasks.appendChild(tr);
     });
     priorityColor();
@@ -213,9 +217,9 @@ const agregarProyecto = () => {
     const tableProjects = document.getElementById('tableProjects')
     const tr = document.createElement('tr');
     tr.innerHTML = `<td class="text-center p-0" scope="row">${idProject}</td>
-<td class="text-center p-0" title="${project}">${project}</td>
-<td class="text-center p-0">${date}</td>
-<td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1 eliminarProject" onclick="eliminarProject(${idProject})" id="eliminar-${idProject}" value="${idProject}"></button></td>`;
+                    <td class="text-center p-0" title="${project}">${project}</td>
+                    <td class="text-center p-0">${date}</td>
+                    <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1" onclick="eliminarProject(${idProject})" id="eliminar-${idProject}" value="${idProject}"></button></td>`;
     tableProjects.appendChild(tr);
     let proyecto = new Project(idProject, project, date);
     proyectos.push(proyecto);
@@ -274,9 +278,12 @@ const agregarTarea = () => {
     const tableTasks = document.getElementById('tableTasks')
     const tr = document.createElement('tr');
     tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</td>
-<td class="text-center p-0" title="${task}">${task}</td>
-<td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-<td class="text-center p-0"><button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button><button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button></td>`;
+                    <td class="text-center p-0" title="${task}">${task}</td>
+                    <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
+                    <td class="text-center p-0">
+                    <button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button>
+                    <button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button>
+                    </td>`;
     tableTasks.appendChild(tr);
     let tarea = new Task(idTask, task, priority, state);
     proyectos[projectIndex].tasks.push(tarea);
@@ -326,9 +333,8 @@ toggle.addEventListener('click', () => {
   header.classList.toggle('bg-light');
   btnPerfil.classList.toggle('btn-dark')
   for (const table of tables) {
+    table.classList.toggle('table-light');
     table.classList.toggle('table-secondary');
-    table.classList.toggle('table-secondary');
-
   }
   for (const section of sections) {
     section.classList.toggle('bg-light');

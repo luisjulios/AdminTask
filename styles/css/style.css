@@ -147,7 +147,7 @@ canvas {
 
 .section {
   height: auto;
-  width: 40rem;
+  width: 35rem;
   backdrop-filter: blur(7px) saturate(100%);
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
@@ -164,7 +164,7 @@ canvas {
 }
 
 .table {
-  width: 30rem;
+  width: 24rem;
   height: auto;
   font-size: 0.8rem;
   vertical-align: 1rem;
