@@ -100,6 +100,7 @@ let proyectos = [
   // }
 ]
 let proyectosLS = JSON.parse(localStorage.getItem('projects'));
+
 // Prioridades
 const priorityColor = () => {
   // Colorear prioridades
@@ -169,6 +170,11 @@ const mostrarProyectosYTareas = (array) => {
 }
 // Se pushean los proyectos en el localStorage en el array principal de proyectos
 proyectos.push(...proyectosLS);
+mostrarProyectosYTareas(proyectos);
+if (proyectosLS !== null) {
+  // Se cargan los proyectos guardados en el localStorage
+  mostrarProyectosYTareas(proyectosLS);
+}
 // Proyectos
 class Project {
   constructor(id, name, date) {
@@ -391,8 +397,4 @@ $(function () {
     firstDay: 1,
   });
 });
-mostrarProyectosYTareas(proyectos);
-if (proyectosLS) {
-  // Se cargan los proyectos guardados en el localStorage
-  mostrarProyectosYTareas(proyectosLS);
-}
+
