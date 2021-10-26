@@ -16,88 +16,88 @@ autentication();
 
 //Declarar estructura JSON para definir datos iniciales para consumir por el simular
 let proyectos = [
-  {
-    "id": "7164",
-    "name": "Mangonails.cl",
-    "date": "27-10-2021",
-    "tasks": [{
-        "id": "876",
-        "name": "Definir HTML",
-        "priority": "Baja",
-        "state": "true"
-      },
-      {
-        "id": "673",
-        "name": "Definir CSS",
-        "priority": "Media",
-        "state": "false"
-      },
-      {
-        "id": "754",
-        "name": "Definir JS",
-        "priority": "Baja",
-        "state": "false"
-      },
-      {
-        "id": "363",
-        "name": "Insertar galería",
-        "priority": "Media",
-        "state": "false"
-      },
-      {
-        "id": "830",
-        "name": "Hacer formulario",
-        "priority": "Media",
-        "state": "false"
-      },
-      {
-        "id": "807",
-        "name": "Subir repo",
-        "priority": "Media",
-        "state": "false"
-      }
-    ]
-  },
-  {
-    "id": "7705",
-    "name": "AdminTask",
-    "date": "28-10-2021",
-    "tasks": [{
-        "id": "327",
-        "name": "Definir HTML",
-        "priority": "Alta",
-        "state": "false"
-      },
-      {
-        "id": "970",
-        "name": "Definir CSS",
-        "priority": "Media",
-        "state": "false"
-      }
-    ]
-  },
-  {
-    "id": "9447",
-    "name": "Hopet-Shop.cl",
-    "date": "29-10-2021",
-    "tasks": [{
-      "id": "982",
-      "name": "Agregar productos",
-      "priority": "Alta",
-      "state": "false"
-    }]
-  },
-  {
-    "id": "6396",
-    "name": "Portfolio Luis Julio",
-    "date": "01-11-2021",
-    "tasks": [{
-      "id": "989",
-      "name": "Estilo del portfolio",
-      "priority": "Alta",
-      "state": "false"
-    }]
-  }
+  // {
+  //   "id": "7164",
+  //   "name": "Mangonails.cl",
+  //   "date": "27-10-2021",
+  //   "tasks": [{
+  //       "id": "876",
+  //       "name": "Definir HTML",
+  //       "priority": "Baja",
+  //       "state": "true"
+  //     },
+  //     {
+  //       "id": "673",
+  //       "name": "Definir CSS",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "754",
+  //       "name": "Definir JS",
+  //       "priority": "Baja",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "363",
+  //       "name": "Insertar galería",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "830",
+  //       "name": "Hacer formulario",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "807",
+  //       "name": "Subir repo",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     }
+  //   ]
+  // },
+  // {
+  //   "id": "7705",
+  //   "name": "AdminTask",
+  //   "date": "28-10-2021",
+  //   "tasks": [{
+  //       "id": "327",
+  //       "name": "Definir HTML",
+  //       "priority": "Alta",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "970",
+  //       "name": "Definir CSS",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     }
+  //   ]
+  // },
+  // {
+  //   "id": "9447",
+  //   "name": "Hopet-Shop.cl",
+  //   "date": "29-10-2021",
+  //   "tasks": [{
+  //     "id": "982",
+  //     "name": "Agregar productos",
+  //     "priority": "Alta",
+  //     "state": "false"
+  //   }]
+  // },
+  // {
+  //   "id": "6396",
+  //   "name": "Portfolio Luis Julio",
+  //   "date": "01-11-2021",
+  //   "tasks": [{
+  //     "id": "989",
+  //     "name": "Estilo del portfolio",
+  //     "priority": "Alta",
+  //     "state": "false"
+  //   }]
+  // }
 ]
 let proyectosLS = JSON.parse(localStorage.getItem('projects'));
 // Prioridades
@@ -172,7 +172,7 @@ mostrarProyectosYTareas(proyectos);
 proyectos.push(...proyectosLS);
 // Se cargan los proyectos guardados en el localStorage
 mostrarProyectosYTareas(proyectosLS);
-
+console.log(proyectos, proyectosLS);
 // Proyectos
 class Project {
   constructor(id, name, date) {
