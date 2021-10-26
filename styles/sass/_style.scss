@@ -126,6 +126,14 @@ button.anadir {
     }
   }
 }
+.form-check-input {
+  margin: 0.5rem;
+   &:checked {
+    background-color: #198754;
+    color: #ffffff;
+  }
+}
+
 .error {
   border: 3px solid #dc3545;
   background-color: #dc35460c;

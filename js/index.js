@@ -2,7 +2,7 @@
 const nombre = localStorage.getItem('name');
 const nameUser = document.getElementById('btnPerfil');
 
-// Usuario debe tener una cuenta creada
+// Usuario debe puede ser null, redirecciona a login
 const autentication = () => {
   if (nombre == null) {
     setTimeout(function () {
@@ -15,91 +15,92 @@ const autentication = () => {
 autentication();
 
 //Declarar estructura JSON para definir datos iniciales para consumir por el simular
-let proyectos = [{
-    "id": "7164",
-    "name": "Mangonails.cl",
-    "date": "27-10-2021",
-    "tasks": [{
-        "id": "876",
-        "name": "Definir HTML",
-        "priority": "Baja",
-        "state": "true"
-      },
-      {
-        "id": "673",
-        "name": "Definir CSS",
-        "priority": "Media",
-        "state": "false"
-      },
-      {
-        "id": "754",
-        "name": "Definir JS",
-        "priority": "Baja",
-        "state": "false"
-      },
-      {
-        "id": "363",
-        "name": "Insertar galería",
-        "priority": "Media",
-        "state": "false"
-      },
-      {
-        "id": "830",
-        "name": "Hacer formulario",
-        "priority": "Media",
-        "state": "false"
-      },
-      {
-        "id": "807",
-        "name": "Subir repo",
-        "priority": "Media",
-        "state": "false"
-      }
-    ]
-  },
-  {
-    "id": "7705",
-    "name": "AdminTask",
-    "date": "28-10-2021",
-    "tasks": [{
-        "id": "327",
-        "name": "Definir HTML",
-        "priority": "Alta",
-        "state": "false"
-      },
-      {
-        "id": "970",
-        "name": "Definir CSS",
-        "priority": "Media",
-        "state": "false"
-      }
-    ]
-  },
-  {
-    "id": "9447",
-    "name": "Hopet-Shop.cl",
-    "date": "29-10-2021",
-    "tasks": [{
-      "id": "982",
-      "name": "Agregar productos",
-      "priority": "Alta",
-      "state": "false"
-    }]
-  },
-  {
-    "id": "6396",
-    "name": "Portfolio Luis Julio",
-    "date": "01-11-2021",
-    "tasks": [{
-      "id": "989",
-      "name": "Estilo del portfolio",
-      "priority": "Alta",
-      "state": "false"
-    }]
-  }
+let proyectos = [
+  // {
+  //   "id": "7164",
+  //   "name": "Mangonails.cl",
+  //   "date": "27-10-2021",
+  //   "tasks": [{
+  //       "id": "876",
+  //       "name": "Definir HTML",
+  //       "priority": "Baja",
+  //       "state": "true"
+  //     },
+  //     {
+  //       "id": "673",
+  //       "name": "Definir CSS",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "754",
+  //       "name": "Definir JS",
+  //       "priority": "Baja",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "363",
+  //       "name": "Insertar galería",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "830",
+  //       "name": "Hacer formulario",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "807",
+  //       "name": "Subir repo",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     }
+  //   ]
+  // },
+  // {
+  //   "id": "7705",
+  //   "name": "AdminTask",
+  //   "date": "28-10-2021",
+  //   "tasks": [{
+  //       "id": "327",
+  //       "name": "Definir HTML",
+  //       "priority": "Alta",
+  //       "state": "false"
+  //     },
+  //     {
+  //       "id": "970",
+  //       "name": "Definir CSS",
+  //       "priority": "Media",
+  //       "state": "false"
+  //     }
+  //   ]
+  // },
+  // {
+  //   "id": "9447",
+  //   "name": "Hopet-Shop.cl",
+  //   "date": "29-10-2021",
+  //   "tasks": [{
+  //     "id": "982",
+  //     "name": "Agregar productos",
+  //     "priority": "Alta",
+  //     "state": "false"
+  //   }]
+  // },
+  // {
+  //   "id": "6396",
+  //   "name": "Portfolio Luis Julio",
+  //   "date": "01-11-2021",
+  //   "tasks": [{
+  //     "id": "989",
+  //     "name": "Estilo del portfolio",
+  //     "priority": "Alta",
+  //     "state": "false"
+  //   }]
+  // }
 ]
-
-// Prioridades y tarea realizada
+let proyectosLS = JSON.parse(localStorage.getItem('projects'));
+// Prioridades
 const priorityColor = () => {
   // Colorear prioridades
   const badge = document.getElementsByClassName('badge');
@@ -115,6 +116,7 @@ const priorityColor = () => {
     }
   }
 }
+// Marcar tarea como realizada
 const taskDone = (idTask) => {
   const check = document.getElementById(`done-${idTask}`);
   const idProject = check.getAttribute('data-project');
@@ -128,8 +130,10 @@ const taskDone = (idTask) => {
     check.value = "false"
     check.classList.remove('bg-success');
   }
-  return idProject;
+  localStorage.setItem('projects', JSON.stringify(proyectos));
 }
+
+// Para mostrar los proyectos guardados
 const mostrarProyectosYTareas = (array) => {
   const tableProjects = document.getElementById('tableProjects')
   const tableTasks = document.getElementById('tableTasks')
@@ -154,7 +158,7 @@ const mostrarProyectosYTareas = (array) => {
       tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</td>
                       <td class="text-center p-0" title="${task}">${task}</td>
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0">
+                      <td class="text-center p-0" id="${idTask}">
                       <button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button>
                       <button class="btn fas fa-trash-alt text-danger p-1" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button>
                       </td>`;
@@ -164,40 +168,10 @@ const mostrarProyectosYTareas = (array) => {
   })
 }
 mostrarProyectosYTareas(proyectos);
-
-// Eliminar proyectos/tareas
-const eliminarProject = (projecId) => {
-  const btn = document.getElementById(`eliminar-${projecId}`);
-  const projectIndex = proyectos.findIndex(proyecto => proyecto.id == projecId);
-  proyectos.splice(projectIndex, 1)
-  btn.parentElement.parentElement.remove();
-  Toastify({
-    text: "Proyecto eliminado",
-    className: "info",
-    style: {
-      background: "linear-gradient(to right, #6c757d, #212529)",
-    }
-  }).showToast();
-  filtrar();
-  cargarProyectos(proyectos);
-}
-const eliminarTask = (idTask) => {
-  const btn = document.getElementById(`eliminar-${idTask}`);
-  idTask = btn.value;
-  const idProject = btn.getAttribute('data-project');
-  const projectIndex = proyectos.findIndex(proyecto => proyecto.id == idProject);
-  const taskIndex = proyectos[projectIndex].tasks.findIndex(task => task.id == idTask);
-  proyectos[projectIndex].tasks.splice(taskIndex, 1);
-  btn.parentElement.parentElement.remove();
-  Toastify({
-    text: "Tarea eliminada",
-    className: "info",
-    style: {
-      background: "linear-gradient(to right, #6c757d, #212529)",
-    }
-  }).showToast();
-}
-
+// Se cargan los proyectos guardados en el localStorage
+mostrarProyectosYTareas(proyectosLS);
+// Se pushean los proyectos en el localStorage en el array principal de proyectos
+proyectos.push(...proyectosLS);
 // Proyectos
 class Project {
   constructor(id, name, date) {
@@ -233,6 +207,7 @@ const agregarProyecto = () => {
   }
   cargarProyectos(proyectos);
   formProjects.reset();
+  localStorage.setItem('projects', JSON.stringify(proyectos));
 }
 const btnP = document.getElementById('btnP');
 btnP.addEventListener('click', agregarProyecto);
@@ -240,7 +215,7 @@ formProjects.addEventListener('submit', (e) => {
   e.preventDefault()
 })
 
-// Iterar listado de proyectos agregados para seleccionarlo al momento de agregarle tareas
+// Cargar proyectos en options
 const listadoProyectos = document.getElementById('projects')
 const cargarProyectos = (array) => {
   listadoProyectos.innerHTML = '<option id="all" selected value="all">Ver todas</option>';
@@ -253,7 +228,25 @@ const cargarProyectos = (array) => {
   });
 }
 cargarProyectos(proyectos);
+cargarProyectos(proyectosLS);
 
+// Eliminar proyectos
+const eliminarProject = (projecId) => {
+  const btn = document.getElementById(`eliminar-${projecId}`);
+  const projectIndex = proyectos.findIndex(proyecto => proyecto.id == projecId);
+  proyectos.splice(projectIndex, 1)
+  btn.parentElement.parentElement.remove();
+  Toastify({
+    text: "Proyecto eliminado",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #6c757d, #212529)",
+    }
+  }).showToast();
+  filtrar();
+  cargarProyectos(proyectos);
+  localStorage.setItem('projects', JSON.stringify(proyectos));
+}
 
 // Tareas
 class Task {
@@ -280,7 +273,7 @@ const agregarTarea = () => {
     tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</td>
                     <td class="text-center p-0" title="${task}">${task}</td>
                     <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                    <td class="text-center p-0">
+                    <td class="text-center p-0" id="${idTask}">
                     <button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button>
                     <button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button>
                     </td>`;
@@ -297,12 +290,31 @@ const agregarTarea = () => {
   }
   formTasks.reset();
   priorityColor();
+  localStorage.setItem('projects', JSON.stringify(proyectos));
 }
 const btnT = document.getElementById('btnT')
 btnT.addEventListener('click', agregarTarea)
 formTasks.addEventListener('submit', (e) => {
   e.preventDefault();
 })
+// Eliminar tareas
+const eliminarTask = (idTask) => {
+  const btn = document.getElementById(`eliminar-${idTask}`);
+  idTask = btn.value;
+  const idProject = btn.getAttribute('data-project');
+  const projectIndex = proyectos.findIndex(proyecto => proyecto.id == idProject);
+  const taskIndex = proyectos[projectIndex].tasks.findIndex(task => task.id == idTask);
+  proyectos[projectIndex].tasks.splice(taskIndex, 1);
+  btn.parentElement.parentElement.remove();
+  Toastify({
+    text: "Tarea eliminada",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #6c757d, #212529)",
+    }
+  }).showToast();
+  localStorage.setItem('projects', JSON.stringify(proyectos));
+}
 
 //Filtrar tareas por proyectos
 const filtrar = () => {
@@ -314,6 +326,7 @@ const filtrar = () => {
     proyectosFiltrados = proyectos.filter(el => el.id == listadoProyectos.value)
   }
   mostrarProyectosYTareas(proyectosFiltrados);
+  localStorage.setItem('projects', JSON.stringify(proyectos));
 }
 listadoProyectos.addEventListener('change', () => {
   filtrar();
@@ -346,6 +359,7 @@ toggle.addEventListener('click', () => {
     localStorage.setItem('darkMode', 'disabled');
   }
 })
+// Persistencia del modo oscuro
 if (localStorage.getItem('darkMode') == 'enabled') {
   const body = document.getElementById('body');
   const footer = document.getElementById('footer');

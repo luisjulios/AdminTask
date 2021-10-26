@@ -239,6 +239,14 @@ button.anadir:hover {
   color: #ffffff;
 }
 
+.form-check-input {
+  margin: 0.5rem;
+}
+.form-check-input:checked {
+  background-color: #198754;
+  color: #ffffff;
+}
+
 .error {
   border: 3px solid #dc3545;
   background-color: #dc35460c;
