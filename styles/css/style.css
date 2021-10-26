@@ -147,7 +147,7 @@ canvas {
 
 .section {
   height: auto;
-  width: 35rem;
+  width: 32rem;
   backdrop-filter: blur(7px) saturate(100%);
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
@@ -159,7 +159,7 @@ canvas {
 }
 
 #sectionRegistro, #sectionLogin, #section404 {
-  width: 30rem;
+  width: 25rem;
   margin: auto;
 }
 
@@ -277,143 +277,6 @@ button.anadir:hover {
 .footer .form-check .form-check-input:checked {
   background-color: #212529;
   border-color: #757575;
-}
-
-@media (width: 375px) {
-  .header {
-    margin-bottom: 4rem;
-  }
-
-  .section {
-    width: 23rem;
-  }
-  .section form {
-    width: 20rem;
-  }
-
-  #sectionRegistro {
-    width: 23rem;
-    height: 35rem;
-    margin: 0 auto;
-  }
-
-  #sectionLogin {
-    width: 23rem;
-    height: auto;
-    margin: 0 auto;
-  }
-
-  .footer__p {
-    font-size: smaller;
-  }
-
-  .table {
-    width: 22rem;
-    height: auto;
-    font-size: 0.8rem;
-  }
-}
-@media (width: 425px) {
-  .header {
-    margin-bottom: 4rem;
-  }
-
-  .section {
-    width: 27rem;
-  }
-  .section form {
-    width: 20rem;
-  }
-
-  #sectionRegistro {
-    width: 27rem;
-    height: 35rem;
-    margin: 0 auto;
-  }
-
-  #sectionLogin {
-    width: 27rem;
-    height: auto;
-    margin: 0 auto;
-  }
-
-  .footer__p {
-    font-size: smaller;
-  }
-
-  .table {
-    width: 22rem;
-    height: auto;
-    font-size: 0.8rem;
-  }
-}
-@media (width: 576px) {
-  .header {
-    margin-bottom: 4rem;
-  }
-
-  .section {
-    width: 29rem;
-  }
-  .section form {
-    width: 20rem;
-  }
-
-  #sectionRegistro {
-    width: 29rem;
-    height: 35rem;
-    margin: 0 auto;
-  }
-
-  #sectionLogin {
-    width: 29rem;
-    height: auto;
-    margin: 0 auto;
-  }
-
-  .footer__p {
-    font-size: smaller;
-  }
-
-  .table {
-    width: 22rem;
-    height: auto;
-    font-size: 0.8rem;
-  }
-}
-@media (width: 768px) {
-  .header {
-    margin-bottom: 4rem;
-  }
-
-  .section {
-    width: 40rem;
-  }
-  .section form {
-    width: 20rem;
-  }
-
-  #sectionRegistro {
-    width: 40rem;
-    height: 35rem;
-    margin: 0 auto;
-  }
-
-  #sectionLogin {
-    width: 40rem;
-    height: auto;
-    margin: 0 auto;
-  }
-
-  .footer__p {
-    font-size: smaller;
-  }
-
-  .table {
-    width: 22rem;
-    height: auto;
-    font-size: 0.8rem;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

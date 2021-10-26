@@ -42,7 +42,7 @@ canvas {
 }
 .section {
   height: auto;
-  width: 35rem;
+  width: 32rem;
   backdrop-filter: blur(7px) saturate(100%);
   border-radius: 1rem;
   border: 0.1rem solid rgba(209, 213, 219, 0.5);
@@ -53,7 +53,7 @@ canvas {
   padding: 1rem;
 }
 #sectionRegistro, #sectionLogin, #section404 {
-  width: 30rem;
+  width: 25rem;
   margin: auto;
 }
 .table{
@@ -163,123 +163,123 @@ button.anadir {
   }
 }
 
-@media (width: 375px) {
-  .header {
-    margin-bottom: 4rem;
-  }
-  .section {
-    width: 23rem;
-    form {
-      width: 20rem;
-    }
-  }
-  #sectionRegistro{
-    width: 23rem;
-    height: 35rem;
-    margin: 0 auto;
-  }
-  #sectionLogin {
-    width: 23rem;
-    height: auto;
-    margin: 0 auto;
-  }
-    .footer__p {
-      font-size: smaller;
-  }
+// @media (width: 375px) {
+//   .header {
+//     margin-bottom: 4rem;
+//   }
+//   .section {
+//     width: 23rem;
+//     form {
+//       width: 20rem;
+//     }
+//   }
+//   #sectionRegistro{
+//     width: 23rem;
+//     height: 35rem;
+//     margin: 0 auto;
+//   }
+//   #sectionLogin {
+//     width: 20rem;
+//     height: auto;
+//     margin: 0 auto;
+//   }
+//     .footer__p {
+//       font-size: smaller;
+//   }
   
-.table{
-  width: 22rem;
-  height: auto;
-  font-size: 0.8rem;
-}
-}
-@media (width: 425px) {
-  .header {
-    margin-bottom: 4rem;
-  }
-  .section {
-    width: 27rem;
-    form {
-      width: 20rem;
-    }
-  }
-  #sectionRegistro{
-    width: 27rem;
-    height: 35rem;
-    margin: 0 auto;
-  }
-  #sectionLogin {
-    width: 27rem;
-    height: auto;
-    margin: 0 auto;
-  }
-    .footer__p {
-      font-size: smaller;
-  }
+// .table{
+//   width: 22rem;
+//   height: auto;
+//   font-size: 0.8rem;
+// }
+// }
+// @media (min-width: 425px) {
+//   .header {
+//     margin-bottom: 4rem;
+//   }
+//   .section {
+//     width: 27rem;
+//     form {
+//       width: 20rem;
+//     }
+//   }
+//   #sectionRegistro{
+//     width: 27rem;
+//     height: 35rem;
+//     margin: 0 auto;
+//   }
+//   #sectionLogin {
+//     width: 27rem;
+//     height: auto;
+//     margin: 0 auto;
+//   }
+//     .footer__p {
+//       font-size: smaller;
+//   }
   
-.table{
-  width: 22rem;
-  height: auto;
-  font-size: 0.8rem;
-}
-}
-@media (width: 576px) {
-  .header {
-    margin-bottom: 4rem;
-  }
-  .section {
-    width: 29rem;
-    form {
-      width: 20rem;
-    }
-  }
-  #sectionRegistro{
-    width: 29rem;
-    height: 35rem;
-    margin: 0 auto;
-  }
-  #sectionLogin {
-    width: 29rem;
-    height: auto;
-    margin: 0 auto;
-  }
-    .footer__p {
-      font-size: smaller;
-  }
+// .table{
+//   width: 22rem;
+//   height: auto;
+//   font-size: 0.8rem;
+// }
+// }
+// @media (width: 576px) {
+//   .header {
+//     margin-bottom: 4rem;
+//   }
+//   .section {
+//     width: 29rem;
+//     form {
+//       width: 20rem;
+//     }
+//   }
+//   #sectionRegistro{
+//     width: 29rem;
+//     height: 35rem;
+//     margin: 0 auto;
+//   }
+//   #sectionLogin {
+//     width: 29rem;
+//     height: auto;
+//     margin: 0 auto;
+//   }
+//     .footer__p {
+//       font-size: smaller;
+//   }
   
-.table{
-  width: 22rem;
-  height: auto;
-  font-size: 0.8rem;
-}
-}
-@media (width: 768px) {
-  .header {
-    margin-bottom: 4rem;
-  }
-  .section {
-    width: 40rem;
-    form {
-      width: 20rem;
-    }
-  }
-  #sectionRegistro{
-    width: 40rem;
-    height: 35rem;
-    margin: 0 auto;
-  }
-  #sectionLogin {
-    width: 40rem;
-    height: auto;
-    margin: 0 auto;
-  }
-    .footer__p {
-      font-size: smaller;
-  }
+// .table{
+//   width: 22rem;
+//   height: auto;
+//   font-size: 0.8rem;
+// }
+// }
+// @media (width: 768px) {
+//   .header {
+//     margin-bottom: 4rem;
+//   }
+//   .section {
+//     width: 40rem;
+//     form {
+//       width: 20rem;
+//     }
+//   }
+//   #sectionRegistro{
+//     width: 40rem;
+//     height: 35rem;
+//     margin: 0 auto;
+//   }
+//   #sectionLogin {
+//     width: 40rem;
+//     height: auto;
+//     margin: 0 auto;
+//   }
+//     .footer__p {
+//       font-size: smaller;
+//   }
   
-.table{
-  width: 22rem;
-  height: auto;
-  font-size: 0.8rem;
-}
-}
+// .table{
+//   width: 22rem;
+//   height: auto;
+//   font-size: 0.8rem;
+// }
+// }
