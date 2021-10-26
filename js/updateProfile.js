@@ -13,7 +13,7 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s)
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const btnUpdateProfile = document.getElementById('updateProfile');
-const validarUpdate = (name, email, password) => { 
+const validarUpdate = (name, email, password) => {
   let isNameValid = false;
   let isEmailValid = false;
   let isPasswordValid = false;
@@ -41,10 +41,10 @@ const updateUser = () => {
   let name = inputName.value;
   let email = inputEmail.value;
   let password = inputPassword.value;
-    if (validarUpdate(name, email, password)) {
-      localStorage.setItem('name', name);
-      localStorage.setItem('email', email);
-      localStorage.setItem('password', password);
+  if (validarUpdate(name, email, password)) {
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
     Toastify({
       text: "Perfil actualizado",
       className: "info",
@@ -76,6 +76,6 @@ const updateUser = () => {
 btnUpdateProfile.addEventListener('click', updateUser);
 
 const formProfile = document.getElementById('formProfile');
-formProfile.addEventListener('submit', (e)=>{
+formProfile.addEventListener('submit', (e) => {
   e.preventDefault();
 })

@@ -32,5 +32,6 @@ const iniciarSesion = () => {
 }
 login.addEventListener('click', iniciarSesion);
 formLogin.addEventListener('submit', (e) => {
-e.preventDefault();
+  e.preventDefault();
 })
+

@@ -15,7 +15,7 @@ const inputConfirmPassword = document.getElementById('confirmPassword');
 const crearCuenta = document.getElementById('crearCuenta')
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8}$/;
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const validarRegistro = (name, email, password, confirmPassword) => { 
+const validarRegistro = (name, email, password, confirmPassword) => {
   let isNameValid = false;
   let isEmailValid = false;
   let isPasswordValid = false;
@@ -49,7 +49,7 @@ const registroUser = () => {
   let password = inputPassword.value;
   let confirmPassword = inputConfirmPassword.value;
   id = Date.now().toString().slice(10, 14);
-    if (validarRegistro(name, email, password, confirmPassword)) {
+  if (validarRegistro(name, email, password, confirmPassword)) {
     let usuario = new Users(id, name, email, password);
     users.push(usuario);
     Toastify({
@@ -90,4 +90,3 @@ crearCuenta.addEventListener('click', registroUser);
 formCrearCuenta.addEventListener('submit', (e) => {
   e.preventDefault();
 })
-

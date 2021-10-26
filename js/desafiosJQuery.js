@@ -51,29 +51,29 @@
 //   });
 // })
 
-// // Desafío: AJAX en tu Proyecto
+// Desafío: AJAX en tu Proyecto
 
-// $('#search').on("click", () => {
-//   const search = $('#wordInput').val().trim()
-//   consultarPalabra(search)
-// })
-// const consultarPalabra = (query) => {
-//   $.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`, (res, state)=>{
-//     const word = res[0].word;
-//     const origin = res[0].origin;
-//     const phonetic = res[0].phonetic;
-//     const pronunciation =  res[0].phonetics[0].audio;
-//     $("#word").html("");
-//     if (state == 'success') {
-//           $("#word").append(`
-//     <div class="card-header">${word}</div>
-//     <div class="card-body">
-//       <h5 class="card-title">${phonetic}</h5>
-//       <audio controls><source src="${pronunciation}" type="audio/mp3">
-//       </audio>
-//       <p class="card-text">${origin}</p>
-//     </div>`)
-//     }
+$('#search').on("click", () => {
+  const search = $('#wordInput').val().trim()
+  consultarPalabra(search)
+})
+const consultarPalabra = (query) => {
+  $.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`, (res, state)=>{
+    const word = res[0].word;
+    const origin = res[0].origin;
+    const phonetic = res[0].phonetic;
+    const pronunciation =  res[0].phonetics[0].audio;
+    $("#word").html("");
+    if (state == 'success') {
+          $("#word").append(`
+    <div class="card-header">${word}</div>
+    <div class="card-body">
+      <h5 class="card-title">${phonetic}</h5>
+      <audio controls><source src="${pronunciation}" type="audio/mp3">
+      </audio>
+      <p class="card-text">${origin}</p>
+    </div>`)
+    }
 
-//   })
-// }
+  })
+}

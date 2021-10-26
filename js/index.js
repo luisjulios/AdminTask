@@ -1,135 +1,103 @@
 // Menu bienvenida
 const nombre = localStorage.getItem('name');
 const nameUser = document.getElementById('btnPerfil');
-      nameUser.innerText =`Hola! Bienvenido, ${nombre}.`;
+
+// Usuario debe tener una cuenta creada
+const autentication = () => {
+  if (nombre == null) {
+    setTimeout(function () {
+      window.location.href = "login.html";
+    }, 1)
+  } else {
+    nameUser.innerText = `Hola! Bienvenido, ${nombre}.`;
+  }
+}
+autentication();
 
 //Declarar estructura JSON para definir datos iniciales para consumir por el simular
-let proyectos = [
-{
-    "id": "1308",
+let proyectos = [{
+    "id": "7164",
     "name": "Mangonails.cl",
-    "date": "2021-10-31",
-    "tasks": [
-        {
-            "id": "1",
-            "name": "Definir HTML",
-            "priority": "Alta",
-            "state": "false"
-        },
-        {
-            "id": "2",
-            "name": "Definir CSS",
-            "priority": "Media",
-            "state": "true"
-        },
-        {
-            "id": "3",
-            "name": "Definir JS",
-            "priority": "Baja",
-            "state": "false"
-        },
-        {
-            "id": "4",
-            "name": "Responsive",
-            "priority": "Media",
-            "state": "true"
-        }
+    "date": "27-10-2021",
+    "tasks": [{
+        "id": "876",
+        "name": "Definir HTML",
+        "priority": "Baja",
+        "state": "true"
+      },
+      {
+        "id": "673",
+        "name": "Definir CSS",
+        "priority": "Media",
+        "state": "false"
+      },
+      {
+        "id": "754",
+        "name": "Definir JS",
+        "priority": "Baja",
+        "state": "false"
+      },
+      {
+        "id": "363",
+        "name": "Insertar galería",
+        "priority": "Media",
+        "state": "false"
+      },
+      {
+        "id": "830",
+        "name": "Hacer formulario",
+        "priority": "Media",
+        "state": "false"
+      },
+      {
+        "id": "807",
+        "name": "Subir repo",
+        "priority": "Media",
+        "state": "false"
+      }
     ]
-},
-{
-  "id": "2419",
-  "name": "AdminTask",
-  "date": "2021-10-31",
-  "tasks": [
-      {
-          "id": "5",
-          "name": "Definir HTML",
-          "priority": "Alta",
-          "state": "false"
+  },
+  {
+    "id": "7705",
+    "name": "AdminTask",
+    "date": "28-10-2021",
+    "tasks": [{
+        "id": "327",
+        "name": "Definir HTML",
+        "priority": "Alta",
+        "state": "false"
       },
       {
-          "id": "6",
-          "name": "Definir CSS",
-          "priority": "Media",
-          "state": "true"
-      },
-      {
-          "id": "7",
-          "name": "Definir JS",
-          "priority": "Baja",
-          "state": "false"
-      },
-      {
-          "id": "8",
-          "name": "Responsive",
-          "priority": "Media",
-          "state": "true"
+        "id": "970",
+        "name": "Definir CSS",
+        "priority": "Media",
+        "state": "false"
       }
-  ]
-},
-{
-  "id": "9142",
-  "name": "HopeShop.cl",
-  "date": "2021-10-31",
-  "tasks": [
-      {
-          "id": "9",
-          "name": "Definir HTML",
-          "priority": "Alta",
-          "state": "false"
-      },
-      {
-          "id": "10",
-          "name": "Definir CSS",
-          "priority": "Media",
-          "state": "true"
-      },
-      {
-          "id": "11",
-          "name": "Definir JS",
-          "priority": "Baja",
-          "state": "false"
-      },
-      {
-          "id": "12",
-          "name": "Responsive",
-          "priority": "Media",
-          "state": "true"
-      }
-  ]
-},
-{
-  "id": "7434",
-  "name": "Portafolio",
-  "date": "2021-10-31",
-  "tasks": [
-      {
-          "id": "13",
-          "name": "Definir HTML",
-          "priority": "Alta",
-          "state": "false"
-      },
-      {
-          "id": "14",
-          "name": "Definir CSS",
-          "priority": "Media",
-          "state": "true"
-      },
-      {
-          "id": "15",
-          "name": "Definir JS",
-          "priority": "Baja",
-          "state": "false"
-      },
-      {
-          "id": "16",
-          "name": "Responsive",
-          "priority": "Media",
-          "state": "true"
-      }
-  ]
-}
-];
+    ]
+  },
+  {
+    "id": "9447",
+    "name": "Hopet-Shop.cl",
+    "date": "29-10-2021",
+    "tasks": [{
+      "id": "982",
+      "name": "Agregar productos",
+      "priority": "Alta",
+      "state": "false"
+    }]
+  },
+  {
+    "id": "6396",
+    "name": "Portfolio Luis Julio",
+    "date": "01-11-2021",
+    "tasks": [{
+      "id": "989",
+      "name": "Estilo del portfolio",
+      "priority": "Alta",
+      "state": "false"
+    }]
+  }
+]
 
 // Prioridades y tarea realizada
 const priorityColor = () => {
@@ -147,54 +115,19 @@ const priorityColor = () => {
     }
   }
 }
-const taskDone = () => {
-  const checks = document.getElementsByClassName('fa-check-circle')
-  for (const check of checks) {
-    check.addEventListener('click', () => {
-      if (check.classList.contains('text-success')) {
-        check.classList.remove('text-success')
-      } else {
-        check.classList.add('text-success')
-      }
-    })
+const taskDone = (idTask) => {
+  const check = document.getElementById(`done-${idTask}`);
+  const idProject = check.getAttribute('data-project');
+  const projectIndex = proyectos.findIndex(proyecto => proyecto.id == idProject);
+  const taskIndex = proyectos[projectIndex].tasks.findIndex(task => task.id == idTask);
+  proyectos[projectIndex].tasks[taskIndex].state = !proyectos[projectIndex].tasks[taskIndex].state;
+  if (check.value == "false") {
+    check.value = "true"
+    check.classList.add('bg-success');
+  } else {
+    check.value = "false"
+    check.classList.remove('bg-success');
   }
-  // const idProject = btn.getAttribute('data-project');
-  // const projectIndex = proyectos.findIndex(proyecto => proyecto.id == idProject);
-  // const taskIndex = proyectos[projectIndex].tasks.findIndex(task => task.id == idTask);
-  // proyectos[projectIndex].tasks.splice(taskIndex, 1);
-}
-
-// Eliminar proyectos/tareas
-const eliminarProject = (projecId)=> {
-  const btn = document.getElementById(`eliminar-${projecId}`);
-      const projectIndex = proyectos.findIndex(proyecto => proyecto.id == projecId);
-      proyectos.splice(projectIndex, 1)
-      btn.parentElement.parentElement.remove();
-      Toastify({
-        text: "Proyecto eliminado",
-        className: "info",
-        style: {
-          background: "linear-gradient(to right, #6c757d, #212529)",
-        }
-      }).showToast();
-      filtrar();
-}
-
-const eliminarTask = (idTask)=> {
-  const btn = document.getElementById(`eliminar-${idTask}`);
-    idTask = btn.value;
-    const idProject = btn.getAttribute('data-project');
-    const projectIndex = proyectos.findIndex(proyecto => proyecto.id == idProject);
-    const taskIndex = proyectos[projectIndex].tasks.findIndex(task => task.id == idTask);
-    proyectos[projectIndex].tasks.splice(taskIndex, 1);
-    btn.parentElement.parentElement.remove();
-    Toastify({
-      text: "Tarea eliminada",
-      className: "info",
-      style: {
-        background: "linear-gradient(to right, #6c757d, #212529)",
-      }
-    }).showToast();
 }
 const mostrarProyectosYTareas = (array) => {
   const tableProjects = document.getElementById('tableProjects')
@@ -206,28 +139,60 @@ const mostrarProyectosYTareas = (array) => {
     let project = proyecto.name;
     let date = proyecto.date;
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td class="text-center p-0" scope="row">${idProject}</th>
-                      <td class="text-center p-0" title=${project}">${project}</td>
-                      <td class="text-center p-0">${date}</td>
-                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1 eliminarProject" onclick="eliminarProject(${idProject})"  id="eliminar-${idProject}" value="${idProject}"></button></td>`;
+    tr.innerHTML = `<td class="text-center p-0" scope="row">${idProject}</td>
+<td class="text-center p-0" title=${project}">${project}</td>
+<td class="text-center p-0">${date}</td>
+<td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1 eliminarProject" onclick="eliminarProject(${idProject})" id="eliminar-${idProject}" value="${idProject}"></button></td>`;
     tableProjects.appendChild(tr);
     proyecto['tasks'].forEach(tasks => {
-    let idTask = tasks.id;
-    let task = tasks.name;
-    let priority = tasks.priority;
-    let state = tasks.state;
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</th>
-                      <td class="text-center p-0" title="${task}">${task}</td>
-                      <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1"  value="${state}" id="done-${idTask}"></button><button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button></td>`;
-    tableTasks.appendChild(tr);
-  });
-  priorityColor();
+      let idTask = tasks.id;
+      let task = tasks.name;
+      let priority = tasks.priority;
+      let state = false;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</td>
+<td class="text-center p-0" title="${task}">${task}</td>
+<td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
+<td class="text-center p-0"><button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button><button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button></td>`;
+      tableTasks.appendChild(tr);
+    });
+    priorityColor();
   })
-  taskDone();
 }
 mostrarProyectosYTareas(proyectos);
+
+// Eliminar proyectos/tareas
+const eliminarProject = (projecId) => {
+  const btn = document.getElementById(`eliminar-${projecId}`);
+  const projectIndex = proyectos.findIndex(proyecto => proyecto.id == projecId);
+  proyectos.splice(projectIndex, 1)
+  btn.parentElement.parentElement.remove();
+  Toastify({
+    text: "Proyecto eliminado",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #6c757d, #212529)",
+    }
+  }).showToast();
+  filtrar();
+  cargarProyectos(proyectos);
+}
+const eliminarTask = (idTask) => {
+  const btn = document.getElementById(`eliminar-${idTask}`);
+  idTask = btn.value;
+  const idProject = btn.getAttribute('data-project');
+  const projectIndex = proyectos.findIndex(proyecto => proyecto.id == idProject);
+  const taskIndex = proyectos[projectIndex].tasks.findIndex(task => task.id == idTask);
+  proyectos[projectIndex].tasks.splice(taskIndex, 1);
+  btn.parentElement.parentElement.remove();
+  Toastify({
+    text: "Tarea eliminada",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #6c757d, #212529)",
+    }
+  }).showToast();
+}
 
 // Proyectos
 class Project {
@@ -241,16 +206,16 @@ class Project {
 const agregarProyecto = () => {
   const inputProject = document.getElementById('proyecto');
   const inputDate = document.getElementById('fecha');
-  idProject = Date.now().toString().slice(9, 14);
+  const idProject = Date.now().toString().slice(9, 14);
   let project = inputProject.value;
   let date = inputDate.value;
   if (project !== '' && date !== '' && project !== ' ' && date !== ' ') {
     const tableProjects = document.getElementById('tableProjects')
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td class="text-center p-0" scope="row">${idProject}</th>
-                      <td class="text-center p-0" title="${project}">${project}</td>
-                      <td class="text-center p-0">${date}</td>
-                      <td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1 eliminarProject" onclick="eliminarProject(${idProject})"  id="eliminar-${idProject}" value="${idProject}"></button></td>`;
+    tr.innerHTML = `<td class="text-center p-0" scope="row">${idProject}</td>
+<td class="text-center p-0" title="${project}">${project}</td>
+<td class="text-center p-0">${date}</td>
+<td class="text-center p-0"><button class="btn fas fa-trash-alt text-danger p-1 eliminarProject" onclick="eliminarProject(${idProject})" id="eliminar-${idProject}" value="${idProject}"></button></td>`;
     tableProjects.appendChild(tr);
     let proyecto = new Project(idProject, project, date);
     proyectos.push(proyecto);
@@ -262,26 +227,29 @@ const agregarProyecto = () => {
       }
     }).showToast();
   }
+  cargarProyectos(proyectos);
   formProjects.reset();
 }
 const btnP = document.getElementById('btnP');
 btnP.addEventListener('click', agregarProyecto);
-formProjects.addEventListener('submit', (e)=>{
+formProjects.addEventListener('submit', (e) => {
   e.preventDefault()
 })
 
 // Iterar listado de proyectos agregados para seleccionarlo al momento de agregarle tareas
 const listadoProyectos = document.getElementById('projects')
-btnP.addEventListener('click', () => {
+const cargarProyectos = (array) => {
   listadoProyectos.innerHTML = '<option id="all" selected value="all">Ver todas</option>';
-  proyectos.forEach(proyecto => {
+  array.forEach(proyecto => {
     const option = document.createElement('option');
     option.setAttribute('id', `${proyecto.id}`);
     option.value = proyecto.id;
     option.innerHTML = proyecto.name;
     listadoProyectos.appendChild(option);
-    });
-})
+  });
+}
+cargarProyectos(proyectos);
+
 
 // Tareas
 class Task {
@@ -289,12 +257,12 @@ class Task {
     this.id = id;
     this.name = name;
     this.priority = priority;
-    this.state = state;
+    this.state = false;
   }
 }
 const agregarTarea = () => {
   const inputTask = document.getElementById('tarea');
-  const selectPriority= document.getElementById('prioridad');
+  const selectPriority = document.getElementById('prioridad');
   const idTask = Date.now().toString().slice(10, 14);
   let task = inputTask.value;
   let priority = selectPriority.value;
@@ -305,10 +273,10 @@ const agregarTarea = () => {
   if (task !== '' && priority !== '' && task !== ' ' && priority !== ' ' && idProject !== 'all') {
     const tableTasks = document.getElementById('tableTasks')
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</th>
-                      <td class="text-center p-0" title="${task}">${task}</td>
-                      <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
-                      <td class="text-center p-0"><button class="btn far fa-check-circle p-1"  value="${state}"></button><button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button></td>`;
+    tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</td>
+<td class="text-center p-0" title="${task}">${task}</td>
+<td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
+<td class="text-center p-0"><button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button><button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button></td>`;
     tableTasks.appendChild(tr);
     let tarea = new Task(idTask, task, priority, state);
     proyectos[projectIndex].tasks.push(tarea);
@@ -322,11 +290,10 @@ const agregarTarea = () => {
   }
   formTasks.reset();
   priorityColor();
-  taskDone();
 }
 const btnT = document.getElementById('btnT')
 btnT.addEventListener('click', agregarTarea)
-formTasks.addEventListener('submit', (e)=>{
+formTasks.addEventListener('submit', (e) => {
   e.preventDefault();
 })
 
@@ -339,7 +306,7 @@ const filtrar = () => {
   } else {
     proyectosFiltrados = proyectos.filter(el => el.id == listadoProyectos.value)
   }
-mostrarProyectosYTareas(proyectosFiltrados);
+  mostrarProyectosYTareas(proyectosFiltrados);
 }
 listadoProyectos.addEventListener('change', () => {
   filtrar();
@@ -347,42 +314,63 @@ listadoProyectos.addEventListener('change', () => {
 
 // Activar caracteristicas del modo oscuro
 const toggle = document.getElementById('toggle');
-const btnToggle = toggle.addEventListener('click', () => {
+toggle.addEventListener('click', () => {
   const body = document.getElementById('body');
   const footer = document.getElementById('footer');
   const header = document.getElementById('header');
   const tables = document.getElementsByTagName('table');
   const sections = document.getElementsByTagName('section');
   const btnPerfil = document.getElementById('btnPerfil');
-  const checks = document.getElementsByClassName('fa-check-circle')
-  body.classList.toggle('bg-secondary');
   body.classList.toggle('bg-dark');
   footer.classList.toggle('bg-light');
-  footer.classList.toggle('bg-secondary');
   header.classList.toggle('bg-light');
-  header.classList.toggle('bg-secondary');
   btnPerfil.classList.toggle('btn-dark')
   for (const table of tables) {
-    table.classList.toggle('table-dark');
+    table.classList.toggle('table-secondary');
+    table.classList.toggle('table-secondary');
+
   }
   for (const section of sections) {
     section.classList.toggle('bg-light');
-    section.classList.toggle('bg-secondary');
   }
-  for (const check of checks) {
-    check.classList.toggle('text-light');
+  toggle.classList.toggle('active');
+  if (body.classList.contains('bg-dark')) {
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    localStorage.setItem('darkMode', 'disabled');
   }
 })
+if (localStorage.getItem('darkMode') == 'enabled') {
+  const body = document.getElementById('body');
+  const footer = document.getElementById('footer');
+  const header = document.getElementById('header');
+  const tables = document.getElementsByTagName('table');
+  const sections = document.getElementsByTagName('section');
+  const btnPerfil = document.getElementById('btnPerfil');
+  body.classList.toggle('bg-dark');
+  footer.classList.toggle('bg-light');
+  header.classList.toggle('bg-light');
+  btnPerfil.classList.toggle('btn-dark')
+  for (const table of tables) {
+    table.classList.toggle('table-secondary');
+    table.classList.toggle('table-secondary');
 
+  }
+  for (const section of sections) {
+    section.classList.toggle('bg-light');
+  }
+
+  toggle.classList.toggle('active');
+}
 // DatePicker
-$(function(){
+$(function () {
   $("#fecha").datepicker({
-      minDate: '1d',
-      maxDate: '90d',
-      beforeShowDay: $.datepicker.noWeekends,
-      dateFormat: "dd-mm-yy",
-      dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-      monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      firstDay: 1,
-      });
+    minDate: '1d',
+    maxDate: '90d',
+    beforeShowDay: $.datepicker.noWeekends,
+    dateFormat: "dd-mm-yy",
+    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    firstDay: 1,
+  });
 });
