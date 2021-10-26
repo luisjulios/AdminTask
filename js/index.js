@@ -167,12 +167,8 @@ const mostrarProyectosYTareas = (array) => {
     priorityColor();
   })
 }
-mostrarProyectosYTareas(proyectos);
 // Se pushean los proyectos en el localStorage en el array principal de proyectos
 proyectos.push(...proyectosLS);
-// Se cargan los proyectos guardados en el localStorage
-mostrarProyectosYTareas(proyectosLS);
-console.log(proyectos, proyectosLS);
 // Proyectos
 class Project {
   constructor(id, name, date) {
@@ -395,3 +391,8 @@ $(function () {
     firstDay: 1,
   });
 });
+mostrarProyectosYTareas(proyectos);
+if (proyectosLS) {
+  // Se cargan los proyectos guardados en el localStorage
+  mostrarProyectosYTareas(proyectosLS);
+}
