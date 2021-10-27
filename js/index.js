@@ -187,7 +187,7 @@ class Project {
 const agregarProyecto = () => {
   const inputProject = document.getElementById('proyecto');
   const inputDate = document.getElementById('fecha');
-  const idProject = Date.now().toString().slice(9, 14);
+  const idProject = 1 + Date.now().toString().slice(10, 13);
   let project = inputProject.value;
   let date = inputDate.value;
   if (project !== '' && date !== '' && project !== ' ' && date !== ' ') {
@@ -262,7 +262,7 @@ class Task {
 const agregarTarea = () => {
   const inputTask = document.getElementById('tarea');
   const selectPriority = document.getElementById('prioridad');
-  const idTask = Date.now().toString().slice(10, 14);
+  const idTask = 2 + Date.now().toString().slice(9, 11);
   let task = inputTask.value;
   let priority = selectPriority.value;
   let state = false;
