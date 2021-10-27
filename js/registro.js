@@ -20,7 +20,7 @@ const validarRegistro = (name, email, password, confirmPassword) => {
   let isEmailValid = false;
   let isPasswordValid = false;
   let isConfirmPasswordValid = false;
-  if (name !== '' && name !== ' ') {
+  if (name !== '') {
     inputName.classList.add('exito');
     isNameValid = true;
   } else {
@@ -44,8 +44,8 @@ const validarRegistro = (name, email, password, confirmPassword) => {
   return (isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) ? true : false;
 }
 const registroUser = () => {
-  let name = inputName.value;
-  let email = inputEmail.value;
+  let name = inputName.value.trim();
+  let email = inputEmail.value.trim();
   let password = inputPassword.value;
   let confirmPassword = inputConfirmPassword.value;
   id = Date.now().toString().slice(10, 14);

@@ -2,7 +2,7 @@
 const nombre = localStorage.getItem('name');
 const nameUser = document.getElementById('btnPerfil');
 
-// Usuario debe puede ser null, redirecciona a login
+// Usuario no puede ser null, redirecciona a login
 const autentication = () => {
   if (nombre == null) {
     setTimeout(function () {
@@ -14,95 +14,13 @@ const autentication = () => {
 }
 autentication();
 
-//Declarar estructura JSON para definir datos iniciales para consumir por el simular
-let proyectos = [
-  // {
-  //   "id": "7164",
-  //   "name": "Mangonails.cl",
-  //   "date": "27-10-2021",
-  //   "tasks": [{
-  //       "id": "876",
-  //       "name": "Definir HTML",
-  //       "priority": "Baja",
-  //       "state": "true"
-  //     },
-  //     {
-  //       "id": "673",
-  //       "name": "Definir CSS",
-  //       "priority": "Media",
-  //       "state": "false"
-  //     },
-  //     {
-  //       "id": "754",
-  //       "name": "Definir JS",
-  //       "priority": "Baja",
-  //       "state": "false"
-  //     },
-  //     {
-  //       "id": "363",
-  //       "name": "Insertar galería",
-  //       "priority": "Media",
-  //       "state": "false"
-  //     },
-  //     {
-  //       "id": "830",
-  //       "name": "Hacer formulario",
-  //       "priority": "Media",
-  //       "state": "false"
-  //     },
-  //     {
-  //       "id": "807",
-  //       "name": "Subir repo",
-  //       "priority": "Media",
-  //       "state": "false"
-  //     }
-  //   ]
-  // },
-  // {
-  //   "id": "7705",
-  //   "name": "AdminTask",
-  //   "date": "28-10-2021",
-  //   "tasks": [{
-  //       "id": "327",
-  //       "name": "Definir HTML",
-  //       "priority": "Alta",
-  //       "state": "false"
-  //     },
-  //     {
-  //       "id": "970",
-  //       "name": "Definir CSS",
-  //       "priority": "Media",
-  //       "state": "false"
-  //     }
-  //   ]
-  // },
-  // {
-  //   "id": "9447",
-  //   "name": "Hopet-Shop.cl",
-  //   "date": "29-10-2021",
-  //   "tasks": [{
-  //     "id": "982",
-  //     "name": "Agregar productos",
-  //     "priority": "Alta",
-  //     "state": "false"
-  //   }]
-  // },
-  // {
-  //   "id": "6396",
-  //   "name": "Portfolio Luis Julio",
-  //   "date": "01-11-2021",
-  //   "tasks": [{
-  //     "id": "989",
-  //     "name": "Estilo del portfolio",
-  //     "priority": "Alta",
-  //     "state": "false"
-  //   }]
-  // }
-]
+//Obtener proyectos del localStorage / pushear proyectos nuevos al array principal de proyectos
+let proyectos = []
 let proyectosLS = JSON.parse(localStorage.getItem('projects'));
 if (proyectosLS) {
   proyectos.push(...proyectosLS);
 }
+
 // Prioridades
 const priorityColor = () => {
   // Colorear prioridades
@@ -119,6 +37,7 @@ const priorityColor = () => {
     }
   }
 }
+
 // Marcar tarea como realizada
 const taskDone = (idTask) => {
   const check = document.getElementById(`done-${idTask}`);
@@ -172,7 +91,7 @@ const mostrarProyectosYTareas = (array) => {
                     document.getElementById(`done-${idTask}`).checked = checked;
     });
     priorityColor();
-  })
+  });
 }
 mostrarProyectosYTareas(proyectos);
 // Proyectos
@@ -188,7 +107,7 @@ const agregarProyecto = () => {
   const inputProject = document.getElementById('proyecto');
   const inputDate = document.getElementById('fecha');
   const idProject = 1 + Date.now().toString().slice(10, 13);
-  let project = inputProject.value;
+  let project = inputProject.value.trim();
   let date = inputDate.value;
   if (project !== '' && date !== '' && project !== ' ' && date !== ' ') {
     const tableProjects = document.getElementById('tableProjects')
@@ -263,7 +182,7 @@ const agregarTarea = () => {
   const inputTask = document.getElementById('tarea');
   const selectPriority = document.getElementById('prioridad');
   const idTask = 2 + Date.now().toString().slice(9, 11);
-  let task = inputTask.value;
+  let task = inputTask.value.trim();
   let priority = selectPriority.value;
   let state = false;
   const proyecto = document.getElementById('projects')
@@ -350,7 +269,6 @@ toggle.addEventListener('click', () => {
   btnPerfil.classList.toggle('btn-dark')
   for (const table of tables) {
     table.classList.toggle('table-dark');
-
   }
   for (const section of sections) {
     section.classList.toggle('bg-light');
@@ -380,9 +298,9 @@ if (localStorage.getItem('darkMode') == 'enabled') {
   for (const section of sections) {
     section.classList.toggle('bg-light');
   }
-
   toggle.classList.toggle('active');
 }
+
 // DatePicker
 $(function () {
   $("#fecha").datepicker({
@@ -396,3 +314,11 @@ $(function () {
   });
 });
 
+//Si desea probar la operatividad del fetch debe descomentar las siguientes lineas
+// const cargarProyectosJSON = async () => {
+//   const res = await fetch('../proyectos.json');
+//   const data = await res.json();
+//   mostrarProyectosYTareas(data);
+//   cargarProyectos(data);
+// }
+// cargarProyectosJSON();
