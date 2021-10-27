@@ -100,7 +100,9 @@ let proyectos = [
   // }
 ]
 let proyectosLS = JSON.parse(localStorage.getItem('projects'));
-proyectos.push(...proyectosLS);
+if (proyectosLS) {
+  proyectos.push(...proyectosLS);
+}
 // Prioridades
 const priorityColor = () => {
   // Colorear prioridades
