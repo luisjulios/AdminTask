@@ -100,9 +100,7 @@ let proyectos = [
   // }
 ]
 let proyectosLS = JSON.parse(localStorage.getItem('projects'));
-// Se pushean los proyectos en el localStorage en el array principal de proyectos
 proyectos.push(...proyectosLS);
-
 // Prioridades
 const priorityColor = () => {
   // Colorear prioridades
@@ -170,9 +168,7 @@ const mostrarProyectosYTareas = (array) => {
     priorityColor();
   })
 }
-
 mostrarProyectosYTareas(proyectos);
-
 // Proyectos
 class Project {
   constructor(id, name, date) {
@@ -229,7 +225,6 @@ const cargarProyectos = (array) => {
   });
 }
 cargarProyectos(proyectos);
-cargarProyectos(proyectosLS);
 
 // Eliminar proyectos
 const eliminarProject = (projecId) => {
