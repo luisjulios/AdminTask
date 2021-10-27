@@ -128,10 +128,12 @@ const taskDone = (idTask) => {
   proyectos[projectIndex].tasks[taskIndex].state = !proyectos[projectIndex].tasks[taskIndex].state;
   if (check.value == "false") {
     check.value = "true"
-    check.classList.add('bg-success');
+    check.classList.add('text-success');
+    localStorage.setItem(`check-${idTask}`, check.checked);
   } else {
     check.value = "false"
-    check.classList.remove('bg-success');
+    check.classList.remove('text-success');
+    localStorage.removeItem(`check-${idTask}`, check.checked);
   }
   localStorage.setItem('projects', JSON.stringify(proyectos));
 }
@@ -162,10 +164,12 @@ const mostrarProyectosYTareas = (array) => {
                       <td class="text-center p-0" title="${task}">${task}</td>
                       <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
                       <td class="text-center p-0" id="${idTask}">
-                      <button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button>
+                      <input class="form-check-input p-1" type="checkbox" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})">
                       <button class="btn fas fa-trash-alt text-danger p-1" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button>
                       </td>`;
       tableTasks.appendChild(tr);
+      let checked = JSON.parse(localStorage.getItem(`check-${idTask}`));
+                    document.getElementById(`done-${idTask}`).checked = checked;
     });
     priorityColor();
   })
@@ -272,7 +276,7 @@ const agregarTarea = () => {
                     <td class="text-center p-0" title="${task}">${task}</td>
                     <td class="text-center p-0" value="${priority}"><span class="badge rounded-pill text-center">${priority}</span></td>
                     <td class="text-center p-0" id="${idTask}">
-                    <button class="btn far fa-check-circle p-1" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})"></button>
+                    <input class="form-check-input p-1" type="checkbox" value="${state}" data-project="${idProject}" id="done-${idTask}" onclick="taskDone(${idTask})">
                     <button class="btn fas fa-trash-alt text-danger p-1 eliminarTask" onclick="eliminarTask(${idTask})" id="eliminar-${idTask}" data-project="${idProject}" value="${idTask}"></button>
                     </td>`;
     tableTasks.appendChild(tr);

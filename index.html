@@ -124,7 +124,7 @@
         <div class="modal-body">
           <form id="formTasks">
             <div class="form-floating">
-              <input type="tarea" class="form-control" id="tarea" autocomplete="off" required maxlength="20">
+              <input type="tarea" class="form-control" id="tarea" autocomplete="off" required maxlength="30">
               <label for="tarea">Nombre de la tarea</label>
             </div>
             <select class="form-select" aria-label="Default select example" id="prioridad" required>
@@ -142,6 +142,36 @@
       </div>
     </div>
   </div>
+    <!-- Modal Perfil -->
+    <div class="modal fade" id="miPerfil" tabindex="-1" aria-labelledby="miPerfilLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="text-center p-3">Datos de mi perfil</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formProfile">
+              <div class="form-floating">
+                <input type="name" class="form-control" id="name" placeholder="Nombre" disabled>
+                <label for="name">Nombre</label>
+              </div>
+              <div class="form-floating">
+                <input type="email" class="form-control" id="email" placeholder="email" autocomplete="off">
+                <label for="email">Email</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
+                <label for="password">Ingresa tu nueva contraseña</label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer d-flex flex-row justify-content-center">
+            <button type="button" class="btn actualizar" id="updateProfile">Guardar cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- Modal Proyecto -->
   <div class="modal fade" id="modalProyecto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="modalProyectoLabel" aria-hidden="true">
@@ -154,7 +184,7 @@
         <div class="modal-body">
           <form id="formProjects">
             <div class="form-floating">
-              <input type="proyecto" class="form-control" id="proyecto" autocomplete="off" maxlength="20">
+              <input type="proyecto" class="form-control" id="proyecto" autocomplete="off" maxlength="30">
               <label for="proyecto">Nombre del proyecto</label>
             </div>
             <div class="form-floating">
@@ -166,36 +196,6 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary" id="btnP">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal Perfil -->
-  <div class="modal fade" id="miPerfil" tabindex="-1" aria-labelledby="miPerfilLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="text-center p-3">Datos de mi perfil</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="formProfile">
-            <div class="form-floating">
-              <input type="name" class="form-control" id="name" placeholder="Nombre" disabled>
-              <label for="name">Nombre</label>
-            </div>
-            <div class="form-floating">
-              <input type="email" class="form-control" id="email" placeholder="email" autocomplete="off">
-              <label for="email">Email</label>
-            </div>
-            <div class="form-floating">
-              <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
-              <label for="password">Ingresa tu nueva contraseña</label>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer d-flex flex-row justify-content-center">
-          <button type="button" class="btn actualizar" id="updateProfile">Guardar cambios</button>
         </div>
       </div>
     </div>
