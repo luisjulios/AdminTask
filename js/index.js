@@ -188,7 +188,7 @@ const agregarTarea = () => {
   const proyecto = document.getElementById('projects')
   const idProject = proyecto.value;
   const projectIndex = proyectos.findIndex(proyecto => proyecto.id == idProject)
-  if (task !== '' && priority !== '' && task !== ' ' && priority !== ' ' && idProject !== 'all') {
+  if (task !== '' && task !== ' ' && priority !== 'disabled' && idProject !== 'all') {
     const tableTasks = document.getElementById('tableTasks')
     const tr = document.createElement('tr');
     tr.innerHTML = `<td class="text-center p-0" scope="row">${idTask}</td>
