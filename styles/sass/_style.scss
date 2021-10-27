@@ -16,6 +16,17 @@ html {
   padding-bottom: 5rem;
   overflow-x: hidden;
 }
+::-webkit-scrollbar {
+  width: 1em;
+}
+::-webkit-scrollbar-track {
+  background-color: #212529;
+  border-radius: 9em;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #6c757d;
+  border-radius: 9em;
+}
 canvas {
   display: block;
   position: absolute;
@@ -138,7 +149,6 @@ button.anadir {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  position: absolute;
   bottom: 0;
   font-size: 1rem;
   position: fixed;
