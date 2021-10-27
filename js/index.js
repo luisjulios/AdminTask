@@ -133,7 +133,7 @@ const taskDone = (idTask) => {
   } else {
     check.value = "false"
     check.classList.remove('text-success');
-    localStorage.removeItem(`check-${idTask}`, check.checked);
+    localStorage.removeItem(`check-${idTask}`);
   }
   localStorage.setItem('projects', JSON.stringify(proyectos));
 }
@@ -315,6 +315,7 @@ const eliminarTask = (idTask) => {
       background: "linear-gradient(to right, #6c757d, #212529)",
     }
   }).showToast();
+  localStorage.removeItem(`check-${idTask}`);
   localStorage.setItem('projects', JSON.stringify(proyectos));
 }
 
@@ -348,8 +349,8 @@ toggle.addEventListener('click', () => {
   header.classList.toggle('bg-light');
   btnPerfil.classList.toggle('btn-dark')
   for (const table of tables) {
-    table.classList.toggle('table-light');
-    table.classList.toggle('table-secondary');
+    table.classList.toggle('table-dark');
+
   }
   for (const section of sections) {
     section.classList.toggle('bg-light');
@@ -374,9 +375,7 @@ if (localStorage.getItem('darkMode') == 'enabled') {
   header.classList.toggle('bg-light');
   btnPerfil.classList.toggle('btn-dark')
   for (const table of tables) {
-    table.classList.toggle('table-secondary');
-    table.classList.toggle('table-secondary');
-
+    table.classList.toggle('table-dark');
   }
   for (const section of sections) {
     section.classList.toggle('bg-light');

@@ -34,4 +34,16 @@ login.addEventListener('click', iniciarSesion);
 formLogin.addEventListener('submit', (e) => {
   e.preventDefault();
 })
-
+if (localStorage.getItem('darkMode') == 'enabled') {
+  const body = document.getElementById('body');
+  const footer = document.getElementById('footer');
+  const header = document.getElementById('header');
+  const sections = document.getElementsByTagName('section');
+  body.classList.toggle('bg-dark');
+  footer.classList.toggle('bg-light');
+  header.classList.toggle('bg-light');
+  for (const section of sections) {
+    section.classList.toggle('bg-light');
+    section.classList.toggle('bg-secondary');
+  }
+}

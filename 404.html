@@ -18,17 +18,12 @@
     crossorigin="anonymous"></script>
   <script defer src="js/particles.min.js"></script>
 	<script defer src="js/particulas.js"></script>
-  <script type="text/javascript">
-    setTimeout(function () {
-      window.location.href = "login.html";
-    }, 10000)
-  </script>
   <link rel="stylesheet" href="styles/css/style.css">
   <title>AdminTask - Página no encontrada</title>
 </head>
 
-<body id="body" class="body bg-secondary">
-  <header class="header container-fluid animate__animated animate__fadeIn bg-light shadow-lg" id="header">
+<body class="body bg-secondary" id="body">
+  <header class="header container-fluid animate__animated animate__fadeIn bg-light shadow-lg bg-secondary" id="header">
     <div class="content">
       <div class="content__container">
         <p class="content__container__text">
@@ -52,12 +47,25 @@
     <p class="footer__p text-center">AdminTask &copy; - Todos los derechos reservados.</p>
     <p class="footer__p text-center">Diseño y desarrollo por <a href="https://www.linkedin.com/in/antsth/"
         target="_blank">Luis Julio</a>.</p>
-    <div class="form-check form-switch d-flex flex-column justify-content-center">
-      <input class="form-check-input" type="checkbox" id="toggle">
-      <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-    </div>
   </footer>
-
+  <script type="text/javascript">
+    setTimeout(function () {
+      window.location.href = "login.html";
+    }, 10000)
+    if (localStorage.getItem('darkMode') == 'enabled') {
+  const body = document.getElementById('body');
+  const footer = document.getElementById('footer');
+  const header = document.getElementById('header');
+  const sections = document.getElementsByTagName('section');
+  body.classList.toggle('bg-dark');
+  footer.classList.toggle('bg-light');
+  header.classList.toggle('bg-light');
+  for (const section of sections) {
+    section.classList.toggle('bg-light');
+    section.classList.toggle('bg-secondary');
+  }
+}
+  </script>
 </body>
 
 </html>
